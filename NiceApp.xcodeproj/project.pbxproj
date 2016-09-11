@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		75A08A134967A9255278ABCF /* Pods_NiceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B71F283865D28602408622 /* Pods_NiceApp.framework */; };
+		EA66C25E1D55FAF20000C6D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66C25D1D55FAF20000C6D9 /* AppDelegate.swift */; };
+		EA66C2651D55FAF20000C6D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA66C2641D55FAF20000C6D9 /* Assets.xcassets */; };
+		EA80FD981D5F608B0091D475 /* ZDMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA80FD971D5F608B0091D475 /* ZDMoreViewController.m */; };
+		EA80FD9C1D5F64020091D475 /* ZDMoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA80FD9B1D5F64020091D475 /* ZDMoreTableViewCell.m */; };
+		EA8E8FCC1D58D04900F0108C /* ZDNiceCommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E8FCB1D58D04900F0108C /* ZDNiceCommonViewController.swift */; };
+		EA8E8FCE1D58D05C00F0108C /* ZDNiceCommonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E8FCD1D58D05C00F0108C /* ZDNiceCommonDetailViewController.swift */; };
+		EAA5E41B1D7F10C2002A1FA4 /* ZDSpecialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5E4191D7F10C2002A1FA4 /* ZDSpecialTableViewCell.swift */; };
+		EAA5E41C1D7F10C2002A1FA4 /* ZDSpecialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA5E41A1D7F10C2002A1FA4 /* ZDSpecialTableViewCell.xib */; };
+		EAA95CAE1D571BA8002C140F /* ZDMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA95CAD1D571BA8002C140F /* ZDMenuHeaderView.swift */; };
+		EAA95CB01D571F66002C140F /* ZDMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA95CAF1D571F66002C140F /* ZDMenuTableViewCell.swift */; };
+		EAA95CB21D57745C002C140F /* ZDHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA95CB11D57745C002C140F /* ZDHomeViewController.swift */; };
+		EAAE16821D60740000BC8DF3 /* UIColor+ZD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE16811D60740000BC8DF3 /* UIColor+ZD.swift */; };
+		EAAE16861D6076D000BC8DF3 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAAE16851D6076D000BC8DF3 /* Menu.storyboard */; };
+		EAAE16881D60786300BC8DF3 /* ZDBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE16871D60786300BC8DF3 /* ZDBaseNavigationController.swift */; };
+		EAAE168A1D60972000BC8DF3 /* ZDNiceSpecialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE16891D60972000BC8DF3 /* ZDNiceSpecialViewController.swift */; };
+		EAAE16901D60986900BC8DF3 /* ZDNiceSpecialDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE168F1D60986900BC8DF3 /* ZDNiceSpecialDetailViewController.swift */; };
+		EAAE16941D60A3B900BC8DF3 /* UIViewController+ZD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE16931D60A3B900BC8DF3 /* UIViewController+ZD.swift */; };
+		EADA99981D58C1A1009C6059 /* ZDAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADA99971D58C1A1009C6059 /* ZDAPIConfig.swift */; };
+		EAE0066C1D5F71A000C6F3D6 /* more_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAE0066B1D5F71A000C6F3D6 /* more_data.plist */; };
+		EAFD2F2D1D56BF8200D665DD /* ZDMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD2F2C1D56BF8200D665DD /* ZDMenuViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		38B71F283865D28602408622 /* Pods_NiceApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		477C96A267360E11D25E6530 /* Pods-NiceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiceApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NiceApp/Pods-NiceApp.debug.xcconfig"; sourceTree = "<group>"; };
+		E57E923A9C912797F3FF958B /* Pods-NiceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiceApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-NiceApp/Pods-NiceApp.release.xcconfig"; sourceTree = "<group>"; };
+		EA66C25A1D55FAF20000C6D9 /* NiceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA66C25D1D55FAF20000C6D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EA66C2641D55FAF20000C6D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EA66C2691D55FAF20000C6D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		EA80FD951D5F608B0091D475 /* NiceApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NiceApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		EA80FD961D5F608B0091D475 /* ZDMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDMoreViewController.h; sourceTree = "<group>"; };
+		EA80FD971D5F608B0091D475 /* ZDMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDMoreViewController.m; sourceTree = "<group>"; };
+		EA80FD9A1D5F64020091D475 /* ZDMoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDMoreTableViewCell.h; sourceTree = "<group>"; };
+		EA80FD9B1D5F64020091D475 /* ZDMoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDMoreTableViewCell.m; sourceTree = "<group>"; };
+		EA8E8FCB1D58D04900F0108C /* ZDNiceCommonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDNiceCommonViewController.swift; sourceTree = "<group>"; };
+		EA8E8FCD1D58D05C00F0108C /* ZDNiceCommonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDNiceCommonDetailViewController.swift; sourceTree = "<group>"; };
+		EAA5E4191D7F10C2002A1FA4 /* ZDSpecialTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDSpecialTableViewCell.swift; sourceTree = "<group>"; };
+		EAA5E41A1D7F10C2002A1FA4 /* ZDSpecialTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZDSpecialTableViewCell.xib; sourceTree = "<group>"; };
+		EAA95CAD1D571BA8002C140F /* ZDMenuHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMenuHeaderView.swift; sourceTree = "<group>"; };
+		EAA95CAF1D571F66002C140F /* ZDMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMenuTableViewCell.swift; sourceTree = "<group>"; };
+		EAA95CB11D57745C002C140F /* ZDHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDHomeViewController.swift; sourceTree = "<group>"; };
+		EAAE16811D60740000BC8DF3 /* UIColor+ZD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ZD.swift"; sourceTree = "<group>"; };
+		EAAE16851D6076D000BC8DF3 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		EAAE16871D60786300BC8DF3 /* ZDBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDBaseNavigationController.swift; sourceTree = "<group>"; };
+		EAAE16891D60972000BC8DF3 /* ZDNiceSpecialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDNiceSpecialViewController.swift; sourceTree = "<group>"; };
+		EAAE168F1D60986900BC8DF3 /* ZDNiceSpecialDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDNiceSpecialDetailViewController.swift; sourceTree = "<group>"; };
+		EAAE16931D60A3B900BC8DF3 /* UIViewController+ZD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ZD.swift"; sourceTree = "<group>"; };
+		EADA99971D58C1A1009C6059 /* ZDAPIConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDAPIConfig.swift; sourceTree = "<group>"; };
+		EAE0066B1D5F71A000C6F3D6 /* more_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = more_data.plist; sourceTree = "<group>"; };
+		EAFD2F2C1D56BF8200D665DD /* ZDMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMenuViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA66C2571D55FAF20000C6D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75A08A134967A9255278ABCF /* Pods_NiceApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9E7B08D807F620D46E13C43A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				38B71F283865D28602408622 /* Pods_NiceApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CAD45ED26E68C137CDF1A87A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				477C96A267360E11D25E6530 /* Pods-NiceApp.debug.xcconfig */,
+				E57E923A9C912797F3FF958B /* Pods-NiceApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EA66C2511D55FAF20000C6D9 = {
+			isa = PBXGroup;
+			children = (
+				EA66C25C1D55FAF20000C6D9 /* NiceApp */,
+				EA66C25B1D55FAF20000C6D9 /* Products */,
+				CAD45ED26E68C137CDF1A87A /* Pods */,
+				9E7B08D807F620D46E13C43A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EA66C25B1D55FAF20000C6D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA66C25A1D55FAF20000C6D9 /* NiceApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA66C25C1D55FAF20000C6D9 /* NiceApp */ = {
+			isa = PBXGroup;
+			children = (
+				EA92D4BF1D56227B0081D58A /* Classes */,
+				EA92D4C01D5622B20081D58A /* Resource */,
+				EA92D4C11D5623EF0081D58A /* Supporting Files */,
+			);
+			path = NiceApp;
+			sourceTree = "<group>";
+		};
+		EA80FD941D5F60530091D475 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				EA80FD961D5F608B0091D475 /* ZDMoreViewController.h */,
+				EA80FD971D5F608B0091D475 /* ZDMoreViewController.m */,
+			);
+			name = More;
+			sourceTree = "<group>";
+		};
+		EA80FD991D5F63C30091D475 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				EA80FD9A1D5F64020091D475 /* ZDMoreTableViewCell.h */,
+				EA80FD9B1D5F64020091D475 /* ZDMoreTableViewCell.m */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		EA92D4BF1D56227B0081D58A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				EA66C25D1D55FAF20000C6D9 /* AppDelegate.swift */,
+				EAFD2F2E1D56BFAD00D665DD /* Base */,
+				EAFD2F291D56BE9200D665DD /* Model */,
+				EAFD2F2B1D56BEDE00D665DD /* View */,
+				EAFD2F2A1D56BEBE00D665DD /* Controller */,
+				EADA99951D58C11C009C6059 /* Expand */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		EA92D4C01D5622B20081D58A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				EA66C2641D55FAF20000C6D9 /* Assets.xcassets */,
+				EAE0066B1D5F71A000C6F3D6 /* more_data.plist */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		EA92D4C11D5623EF0081D58A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA80FD951D5F608B0091D475 /* NiceApp-Bridging-Header.h */,
+				EA66C2691D55FAF20000C6D9 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EAA5E4071D7EF294002A1FA4 /* Special */ = {
+			isa = PBXGroup;
+			children = (
+				EAA5E4191D7F10C2002A1FA4 /* ZDSpecialTableViewCell.swift */,
+				EAA5E41A1D7F10C2002A1FA4 /* ZDSpecialTableViewCell.xib */,
+			);
+			path = Special;
+			sourceTree = "<group>";
+		};
+		EAA95CAC1D571B6D002C140F /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				EAA95CAD1D571BA8002C140F /* ZDMenuHeaderView.swift */,
+				EAA95CAF1D571F66002C140F /* ZDMenuTableViewCell.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		EAAE167E1D60735600BC8DF3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EAAE16931D60A3B900BC8DF3 /* UIViewController+ZD.swift */,
+				EAAE16811D60740000BC8DF3 /* UIColor+ZD.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		EAAE168B1D60976B00BC8DF3 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				EAFD2F2C1D56BF8200D665DD /* ZDMenuViewController.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		EAAE168C1D60978F00BC8DF3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EA8E8FCB1D58D04900F0108C /* ZDNiceCommonViewController.swift */,
+				EA8E8FCD1D58D05C00F0108C /* ZDNiceCommonDetailViewController.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		EAAE168D1D6097A300BC8DF3 /* Special */ = {
+			isa = PBXGroup;
+			children = (
+				EAAE16891D60972000BC8DF3 /* ZDNiceSpecialViewController.swift */,
+				EAAE168F1D60986900BC8DF3 /* ZDNiceSpecialDetailViewController.swift */,
+			);
+			name = Special;
+			sourceTree = "<group>";
+		};
+		EAAE168E1D60981A00BC8DF3 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				EAAE16851D6076D000BC8DF3 /* Menu.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		EADA99951D58C11C009C6059 /* Expand */ = {
+			isa = PBXGroup;
+			children = (
+				EAAE167E1D60735600BC8DF3 /* Extension */,
+				EADA99961D58C167009C6059 /* Network */,
+			);
+			path = Expand;
+			sourceTree = "<group>";
+		};
+		EADA99961D58C167009C6059 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				EADA99971D58C1A1009C6059 /* ZDAPIConfig.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		EAED4EC61D858F9000FFD74E /* Public */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		EAFD2F291D56BE9200D665DD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EAFD2F2A1D56BEBE00D665DD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EAA95CB11D57745C002C140F /* ZDHomeViewController.swift */,
+				EAAE168B1D60976B00BC8DF3 /* Menu */,
+				EAAE168C1D60978F00BC8DF3 /* Common */,
+				EAAE168D1D6097A300BC8DF3 /* Special */,
+				EA80FD941D5F60530091D475 /* More */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EAFD2F2B1D56BEDE00D665DD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EAED4EC61D858F9000FFD74E /* Public */,
+				EAA5E4071D7EF294002A1FA4 /* Special */,
+				EAAE168E1D60981A00BC8DF3 /* Storyboard */,
+				EAA95CAC1D571B6D002C140F /* Menu */,
+				EA80FD991D5F63C30091D475 /* More */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EAFD2F2E1D56BFAD00D665DD /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EAAE16871D60786300BC8DF3 /* ZDBaseNavigationController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EA66C2591D55FAF20000C6D9 /* NiceApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA66C26C1D55FAF20000C6D9 /* Build configuration list for PBXNativeTarget "NiceApp" */;
+			buildPhases = (
+				A167403A84420B3B35541DEA /* [CP] Check Pods Manifest.lock */,
+				EA66C2561D55FAF20000C6D9 /* Sources */,
+				EA66C2571D55FAF20000C6D9 /* Frameworks */,
+				EA66C2581D55FAF20000C6D9 /* Resources */,
+				FF0C5AFF11E2D26E74447929 /* [CP] Embed Pods Frameworks */,
+				07050C808B28A4C47BDEFD7C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NiceApp;
+			productName = NiceApp;
+			productReference = EA66C25A1D55FAF20000C6D9 /* NiceApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EA66C2521D55FAF20000C6D9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ZD;
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "边振东";
+				TargetAttributes = {
+					EA66C2591D55FAF20000C6D9 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 7TFH7J76GM;
+					};
+				};
+			};
+			buildConfigurationList = EA66C2551D55FAF20000C6D9 /* Build configuration list for PBXProject "NiceApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EA66C2511D55FAF20000C6D9;
+			productRefGroup = EA66C25B1D55FAF20000C6D9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EA66C2591D55FAF20000C6D9 /* NiceApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EA66C2581D55FAF20000C6D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAAE16861D6076D000BC8DF3 /* Menu.storyboard in Resources */,
+				EAA5E41C1D7F10C2002A1FA4 /* ZDSpecialTableViewCell.xib in Resources */,
+				EA66C2651D55FAF20000C6D9 /* Assets.xcassets in Resources */,
+				EAE0066C1D5F71A000C6F3D6 /* more_data.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07050C808B28A4C47BDEFD7C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NiceApp/Pods-NiceApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A167403A84420B3B35541DEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FF0C5AFF11E2D26E74447929 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NiceApp/Pods-NiceApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EA66C2561D55FAF20000C6D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAA95CAE1D571BA8002C140F /* ZDMenuHeaderView.swift in Sources */,
+				EAAE16821D60740000BC8DF3 /* UIColor+ZD.swift in Sources */,
+				EA8E8FCE1D58D05C00F0108C /* ZDNiceCommonDetailViewController.swift in Sources */,
+				EAAE16941D60A3B900BC8DF3 /* UIViewController+ZD.swift in Sources */,
+				EA66C25E1D55FAF20000C6D9 /* AppDelegate.swift in Sources */,
+				EA8E8FCC1D58D04900F0108C /* ZDNiceCommonViewController.swift in Sources */,
+				EAAE16901D60986900BC8DF3 /* ZDNiceSpecialDetailViewController.swift in Sources */,
+				EAAE168A1D60972000BC8DF3 /* ZDNiceSpecialViewController.swift in Sources */,
+				EA80FD981D5F608B0091D475 /* ZDMoreViewController.m in Sources */,
+				EAA5E41B1D7F10C2002A1FA4 /* ZDSpecialTableViewCell.swift in Sources */,
+				EAA95CB21D57745C002C140F /* ZDHomeViewController.swift in Sources */,
+				EA80FD9C1D5F64020091D475 /* ZDMoreTableViewCell.m in Sources */,
+				EAAE16881D60786300BC8DF3 /* ZDBaseNavigationController.swift in Sources */,
+				EAA95CB01D571F66002C140F /* ZDMenuTableViewCell.swift in Sources */,
+				EADA99981D58C1A1009C6059 /* ZDAPIConfig.swift in Sources */,
+				EAFD2F2D1D56BF8200D665DD /* ZDMenuViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		EA66C26A1D55FAF20000C6D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EA66C26B1D55FAF20000C6D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EA66C26D1D55FAF20000C6D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 477C96A267360E11D25E6530 /* Pods-NiceApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
+				INFOPLIST_FILE = NiceApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.BZD.NiceApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NiceApp/Supporting Files/NiceApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EA66C26E1D55FAF20000C6D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E57E923A9C912797F3FF958B /* Pods-NiceApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
+				INFOPLIST_FILE = NiceApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.BZD.NiceApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NiceApp/Supporting Files/NiceApp-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA66C2551D55FAF20000C6D9 /* Build configuration list for PBXProject "NiceApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA66C26A1D55FAF20000C6D9 /* Debug */,
+				EA66C26B1D55FAF20000C6D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA66C26C1D55FAF20000C6D9 /* Build configuration list for PBXNativeTarget "NiceApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA66C26D1D55FAF20000C6D9 /* Debug */,
+				EA66C26E1D55FAF20000C6D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EA66C2521D55FAF20000C6D9 /* Project object */;
+}
