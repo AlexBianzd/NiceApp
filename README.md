@@ -1,2 +1,3 @@
 # NiceApp
-todo
+
+update to Swift3
