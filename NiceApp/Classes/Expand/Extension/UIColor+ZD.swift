@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     
-    class func colorWithHexString (stringToConvert : String) -> UIColor {
+    class func colorWithHexString (_ stringToConvert : String) -> UIColor {
         // 默认颜色
         let DEFAULT_VOID_COLOR : UIColor = UIColor.white
       

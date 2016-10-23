@@ -14,17 +14,17 @@ import Kingfisher
 
 class ZDNiceSpecialViewController: UIViewController {
   
-  private var titleSegment: UISegmentedControl!
-  private var containerScrollView: UIScrollView!
-  private var hotTableView: UITableView!
-  private var recentTableView: UITableView!
+  fileprivate var titleSegment: UISegmentedControl!
+  fileprivate var containerScrollView: UIScrollView!
+  fileprivate var hotTableView: UITableView!
+  fileprivate var recentTableView: UITableView!
   
-  private var hotRecommendData = [JSON]()
-  private var recentRecommendData = [JSON]()
+  fileprivate var hotRecommendData = [JSON]()
+  fileprivate var recentRecommendData = [JSON]()
   
-  private let defaultPageSize = 10
-  private var hotPage = 1
-  private var recentPage = 1
+  fileprivate let defaultPageSize = 10
+  fileprivate var hotPage = 1
+  fileprivate var recentPage = 1
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -35,7 +35,7 @@ class ZDNiceSpecialViewController: UIViewController {
     self.fetchRecentRecommendData()
   }
   
-  private func setupUI() {
+  fileprivate func setupUI() {
     titleSegment = UISegmentedControl.init(items: ["最热分享", "最近分享"])
     titleSegment.setWidth(80, forSegmentAt: 0)
     titleSegment.setWidth(80, forSegmentAt: 1)
@@ -75,35 +75,35 @@ class ZDNiceSpecialViewController: UIViewController {
     containerScrollView.addSubview(recentTableView)
   }
   
-  private func fetchHotRecommendData() {
+  fileprivate func fetchHotRecommendData() {
     let baseHotUrl = ZDAPIConfig.API_Server + "community/recommend_apps"
     var parameters = ZDAPIConfig.API_Parameters
     parameters["page"] = String(hotPage)
     parameters["page_size"] = String(defaultPageSize)
-    Alamofire.request(.GET, baseHotUrl, parameters: parameters, encoding: .URL, headers: nil).responseJSON { (response) in
+    Alamofire.request(baseHotUrl, method: .get, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
       switch response.result {
-      case .Success(let value):
+      case .success(let value):
         let json = JSON(value)
         self.hotRecommendData = json["data"]["apps"].arrayValue
         self.hotTableView.reloadData()
-      case .Failure(let error):
+      case .failure(let error):
         print(error)
       }
       
     }
   }
-  private func fetchRecentRecommendData() {
+  fileprivate func fetchRecentRecommendData() {
     let baseHotUrl = ZDAPIConfig.API_Server + "community/apps"
     var parameters = ZDAPIConfig.API_Parameters
     parameters["page"] = String(recentPage)
     parameters["page_size"] = String(defaultPageSize)
-    Alamofire.request(.GET, baseHotUrl, parameters: parameters, encoding: .URL, headers: nil).responseJSON { (response) in
+    Alamofire.request(baseHotUrl, method: .get, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
       switch response.result {
-      case .Success(let value):
+      case .success(let value):
         let json = JSON(value)
         self.recentRecommendData = json["data"]["apps"].arrayValue
         self.recentTableView.reloadData()
-      case .Failure(let error):
+      case .failure(let error):
         print(error)
       }
       
@@ -112,7 +112,7 @@ class ZDNiceSpecialViewController: UIViewController {
   
   func scrollToViewAtSegIndex() {
     let index = self.titleSegment.selectedSegmentIndex
-    containerScrollView.setContentOffset(CGPointMake(self.view.bounds.size.width * CGFloat(index), containerScrollView.contentOffset.y), animated: true)
+    containerScrollView.setContentOffset(CGPoint(x: self.view.bounds.size.width * CGFloat(index), y:containerScrollView.contentOffset.y), animated: true)
   }
 }
 
@@ -182,11 +182,23 @@ extension ZDNiceSpecialViewController: UITableViewDataSource {
       json = self.recentRecommendData[indexPath.section]
     }
     
-    cell.authorAvatar.kf_setImageWithURL(NSURL(string: json["author_avatar_url"].stringValue))
+    cell.authorAvatar.kf.setImage(with: URL(string: json["author_avatar_url"].stringValue),
+                          placeholder: nil,
+                          options: [.transition(.fade(1))],
+                          progressBlock: nil,
+                          completionHandler: nil)
     cell.authorName.text = json["author_name"].stringValue
     cell.authorCareer.text = json["author_career"].stringValue
-    cell.coverImage.kf_setImageWithURL(NSURL(string: json["cover_image"].stringValue))
-    cell.iconImage.kf_setImageWithURL(NSURL(string: json["icon_image"].stringValue))
+    cell.coverImage.kf.setImage(with: URL(string: json["cover_image"].stringValue),
+                                  placeholder: nil,
+                                  options: [.transition(.fade(1))],
+                                  progressBlock: nil,
+                                  completionHandler: nil)
+    cell.iconImage.kf.setImage(with: URL(string: json["icon_image"].stringValue),
+                                  placeholder: nil,
+                                  options: [.transition(.fade(1))],
+                                  progressBlock: nil,
+                                  completionHandler: nil)
     cell.appName.text = json["app_name"].stringValue
     cell.appDescription.text = json["description"].stringValue
     cell.browse.text = json["show_times"].stringValue

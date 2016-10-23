@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIViewController {
-    @IBAction func dismiss(segue : UIStoryboardSegue) {
+    @IBAction func dismiss(_ segue : UIStoryboardSegue) {
         if (self.presentingViewController) != nil {
             self.dismiss(animated: false, completion: nil)
         }

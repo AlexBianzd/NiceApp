@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class ZDNiceSpecialDetailViewController: UIViewController {
     
-    private var datasource = [String:JSON]()
+    fileprivate var datasource = [String:JSON]()
 
     init(datasource : Dictionary<String,JSON>) {
         super.init(nibName: nil, bundle: nil)

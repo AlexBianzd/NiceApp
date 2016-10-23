@@ -9,39 +9,39 @@
 import UIKit
 
 enum ZDControllerType {
-    case Common
-    case Special
+    case common
+    case special
 }
 
-let NotifyShowMenu = NSNotification.Name(rawValue:"NotifyShowMenu")
-let NotifyHideMenu = NSNotification.Name(rawValue:"NotifyHideMenu")
-let NotifyColor    = NSNotification.Name(rawValue:"NotifyColor")
-let NotifyCenter   = NSNotification.Name(rawValue:"NotifyCenter")
+let NotifyShowMenu = Notification.Name(rawValue:"NotifyShowMenu")
+let NotifyHideMenu = Notification.Name(rawValue:"NotifyHideMenu")
+let NotifyColor    = Notification.Name(rawValue:"NotifyColor")
+let NotifyCenter   = Notification.Name(rawValue:"NotifyCenter")
 
 let UI_COLOR_DEFAULT : UIColor = UIColor(red: 0/255.0, green: 166/255.0, blue: 220/255.0, alpha: 1)
 
 
 class ZDHomeViewController: UIViewController {
-    private let menuWidth : CGFloat = 300
-    private let animationDuration = 0.3
+    fileprivate let menuWidth : CGFloat = 300
+    fileprivate let animationDuration = 0.3
     
-    private var centerNavController : ZDBaseNavigationController!
-    private var commonController : ZDNiceCommonViewController?
-    private var specialController : ZDNiceSpecialViewController?
+    fileprivate var centerNavController : ZDBaseNavigationController!
+    fileprivate var commonController : ZDNiceCommonViewController?
+    fileprivate var specialController : ZDNiceSpecialViewController?
     
-    private var menuController : UIViewController!
+    fileprivate var menuController : UIViewController!
     
-    private weak var cover : UIView!
+    fileprivate weak var cover : UIView!
     
-    private var currentController : UIViewController?
+    fileprivate var currentController : UIViewController?
     
-    var controllerType : ZDControllerType! = .Common {
+    var controllerType : ZDControllerType! = .common {
         willSet {
             self.controllerType = newValue
         }
         
         didSet {
-            if controllerType == .Common {
+            if controllerType == .common {
                 guard !(self.currentController is ZDNiceCommonViewController) else {
                     self.leftMenuHiddenAnimate()
                     return
@@ -52,7 +52,7 @@ class ZDHomeViewController: UIViewController {
                     self.commonController = ZDNiceCommonViewController()
                 }
                 self.currentController = commonController
-            } else if controllerType == .Special {
+            } else if controllerType == .special {
                 guard !(self.currentController is ZDNiceSpecialViewController) else {
                     self.leftMenuHiddenAnimate()
                     return
@@ -199,8 +199,8 @@ class ZDHomeViewController: UIViewController {
     
     func leftMenuSetupBackColor(notify : NSNotification) {
         let bg : String = notify.object as! String
-        self.view.backgroundColor = UIColor.colorWithHexString(stringToConvert: bg)
-        self.commonController!.view.backgroundColor = UIColor.colorWithHexString(stringToConvert: bg)
+        self.view.backgroundColor = UIColor.colorWithHexString(bg)
+        self.commonController!.view.backgroundColor = UIColor.colorWithHexString(bg)
     }
     
     func leftMenuSetupCenterView(notify : NSNotification) {
@@ -210,9 +210,9 @@ class ZDHomeViewController: UIViewController {
             UIView.animate(withDuration: animationDuration, animations: { () -> Void in
                 self.view.backgroundColor = UI_COLOR_DEFAULT
             })
-            self.controllerType = .Special
+            self.controllerType = .special
         default:
-            self.controllerType = .Common
+            self.controllerType = .common
         }
     }
 }
