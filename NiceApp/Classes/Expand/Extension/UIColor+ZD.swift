@@ -10,19 +10,20 @@ import UIKit
 
 extension UIColor {
     
-    class func colorWithHexString (stringToConvert stringToConvert : String) -> UIColor {
+    class func colorWithHexString (stringToConvert : String) -> UIColor {
         // 默认颜色
-        let DEFAULT_VOID_COLOR : UIColor = UIColor.whiteColor()
-        
-        var cString : String = stringToConvert.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
+        let DEFAULT_VOID_COLOR : UIColor = UIColor.white
+      
+        var cString : String = stringToConvert.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+
         if cString.characters.count < 6 {
             return DEFAULT_VOID_COLOR
         }
         
         if cString.hasPrefix("0x") {
-            cString = (cString as NSString).substringFromIndex(2)
+            cString = (cString as NSString).substring(from: 2)
         } else if cString.hasPrefix("#") {
-            cString = (cString as NSString).substringFromIndex(1)
+            cString = (cString as NSString).substring(from: 1)
         }
         
         if cString.characters.count != 6 {
@@ -30,18 +31,18 @@ extension UIColor {
         }
         
         var range : NSRange = NSRange(location: 0, length: 2)
-        let rString = (cString as NSString).substringWithRange(range)
+        let rString = (cString as NSString).substring(with: range)
         
         range.location = 2
-        let gString = (cString as NSString).substringWithRange(range)
+        let gString = (cString as NSString).substring(with: range)
         
         range.location = 4
-        let bString = (cString as NSString).substringWithRange(range)
+        let bString = (cString as NSString).substring(with: range)
         
         var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
-        NSScanner(string: rString).scanHexInt(&r)
-        NSScanner(string: gString).scanHexInt(&g)
-        NSScanner(string: bString).scanHexInt(&b)
+        Scanner(string: rString).scanHexInt32(&r)
+        Scanner(string: gString).scanHexInt32(&g)
+        Scanner(string: bString).scanHexInt32(&b)
         
         return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
     }

@@ -14,10 +14,10 @@ class ZDAPIConfig {
     
     static let API_Parameters : Dictionary  = [
         "appVersion" : "2.3.0",
-        "openUDID"   : UIDevice.currentDevice().identifierForVendor!.UUIDString,
+        "openUDID"   : "1bf9ccab8d121135bed763089b514aff901ffc28",
         "platform"   : "1",
-        "resolution" : NSStringFromCGSize(UIScreen.mainScreen().bounds.size),
-        "systemVersion" : UIDevice.currentDevice().systemVersion
+        "resolution" : "{750%2C%201334}",
+        "systemVersion" : "10.0"
     ]
     
     // app版本

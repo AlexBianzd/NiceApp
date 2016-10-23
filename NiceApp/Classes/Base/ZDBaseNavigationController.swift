@@ -9,31 +9,27 @@
 import UIKit
 
 class ZDBaseNavigationController: UINavigationController,UINavigationControllerDelegate, UIGestureRecognizerDelegate {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if respondsToSelector(Selector("interactivePopGestureRecognizer")) {
-            interactivePopGestureRecognizer?.delegate = self
-            interactivePopGestureRecognizer?.delegate = self
-            delegate = self
-        }
-        
-        self.setupUI()
-    }
-    
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    interactivePopGestureRecognizer?.delegate = self
+    delegate = self    
+    self.setupUI()
+  }
+  
     func setupUI() {
-        self.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Compact)
+        self.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.compact)
         self.navigationBar.shadowImage = UIImage()
         self.navigationBar.layer.masksToBounds = true
     }
     
     func showMenu() {
-        NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_SHOWMENU, object: nil)
+        NotificationCenter.default.post(name: NotifyShowMenu, object: nil)
     }
     
-    override func pushViewController(viewController: UIViewController, animated: Bool) {
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if self.viewControllers.count == 0 {
-            let leftItem = UIBarButtonItem.init(image: UIImage.init(named: "nav_menu")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(showMenu))
+            let leftItem = UIBarButtonItem.init(image: UIImage.init(named: "nav_menu")!.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showMenu))
             viewController.navigationItem.leftBarButtonItem = leftItem
         }
         

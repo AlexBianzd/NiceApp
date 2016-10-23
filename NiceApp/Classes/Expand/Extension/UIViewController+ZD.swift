@@ -11,7 +11,7 @@ import Foundation
 extension UIViewController {
     @IBAction func dismiss(segue : UIStoryboardSegue) {
         if (self.presentingViewController) != nil {
-            self.dismissViewControllerAnimated(false, completion: nil)
+            self.dismiss(animated: false, completion: nil)
         }
     }
 }

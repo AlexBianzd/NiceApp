@@ -13,10 +13,10 @@ enum ZDControllerType {
     case Special
 }
 
-let NOTIFY_SHOWMENU   : String = "NOTIFY_SHOWMENU"
-let NOTIFY_HIDEMENU   : String = "NOTIFY_HIDEMENU"
-let NOTIFY_COLOR      : String = "NOTIFY_COLOR"
-let NOTIFY_CENTERVIEW : String = "NOTIFY_CENTERVIEW"
+let NotifyShowMenu = NSNotification.Name(rawValue:"NotifyShowMenu")
+let NotifyHideMenu = NSNotification.Name(rawValue:"NotifyHideMenu")
+let NotifyColor    = NSNotification.Name(rawValue:"NotifyColor")
+let NotifyCenter   = NSNotification.Name(rawValue:"NotifyCenter")
 
 let UI_COLOR_DEFAULT : UIColor = UIColor(red: 0/255.0, green: 166/255.0, blue: 220/255.0, alpha: 1)
 
@@ -84,7 +84,7 @@ class ZDHomeViewController: UIViewController {
         self.addCenterNavController()
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -101,24 +101,24 @@ class ZDHomeViewController: UIViewController {
         self.view.backgroundColor = UI_COLOR_DEFAULT
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ZDHomeViewController.leftMenuShowAnimate), name: NOTIFY_SHOWMENU, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ZDHomeViewController.leftMenuShowAnimate), name: NotifyShowMenu, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ZDHomeViewController.leftMenuHiddenAnimate), name: NOTIFY_HIDEMENU, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ZDHomeViewController.leftMenuHiddenAnimate), name: NotifyHideMenu, object: nil)
+      
+        NotificationCenter.default.addObserver(self, selector: #selector(ZDHomeViewController.leftMenuSetupBackColor(notify:)), name: NotifyColor, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ZDHomeViewController.leftMenuSetupBackColor(_:)), name: NOTIFY_COLOR, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ZDHomeViewController.leftMenuSetupCenterView(notify:)), name: NotifyCenter, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ZDHomeViewController.leftMenuSetupCenterView(_:)), name: NOTIFY_CENTERVIEW, object: nil)
-        
-        self.view.bringSubviewToFront(self.centerNavController.view)
+        self.view.bringSubview(toFront: self.centerNavController.view)
         
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func addCenterNavController () {
@@ -136,64 +136,64 @@ class ZDHomeViewController: UIViewController {
     }
     
     private func addmenuController () {
-        self.menuController.view.frame = CGRectMake(0, 0, menuWidth, UIScreen.mainScreen().bounds.height)
-        self.menuController.view.transform = CGAffineTransformMakeScale(0.5, 0.5)
+      self.menuController.view.frame = CGRect.init(x: 0, y: 0, width: menuWidth, height: UIScreen.main.bounds.height)
+        self.menuController.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         self.view.addSubview(self.menuController.view)
         self.addChildViewController(self.menuController)
         
-        let leftPan : UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ZDHomeViewController.leftMenuDidDrag(_:)))
+        let leftPan : UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ZDHomeViewController.leftMenuDidDrag(pan:)))
         self.menuController.view.addGestureRecognizer(leftPan)
     }
     
     private func addCover(){
         let cover : UIView = UIView(frame: centerNavController!.view.bounds)
-        let pan : UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ZDHomeViewController.leftMenuDidDrag(_:)))
-        cover.backgroundColor = UIColor.clearColor()
+        let pan : UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ZDHomeViewController.leftMenuDidDrag(pan:)))
+        cover.backgroundColor = UIColor.clear
         cover.addGestureRecognizer(pan)
         self.cover = cover
         self.centerNavController!.view.addSubview(cover)
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ZDHomeViewController.leftMenuHiddenAnimate))
         cover.addGestureRecognizer(tap)
         
-        self.centerNavController.view.bringSubviewToFront(cover)
-        self.cover.hidden = true
+        self.centerNavController.view.bringSubview(toFront: cover)
+        self.cover.isHidden = true
     }
     
     
     func leftMenuDidDrag(pan : UIPanGestureRecognizer) {
-        let point = pan.translationInView(pan.view)
+        let point = pan.translation(in: pan.view)
         
-        if (pan.state == .Cancelled || pan.state == .Ended) {
+        if (pan.state == .cancelled || pan.state == .ended) {
             self.leftMenuHiddenAnimate()
         } else {
             self.centerNavController!.view.frame.origin.x += point.x
-            pan.setTranslation(CGPointZero, inView: self.centerNavController.view)
+            pan.setTranslation(CGPoint.init(), in: self.centerNavController.view)
             if self.centerNavController!.view.frame.origin.x > menuWidth {
                 self.centerNavController?.view.frame.origin.x = menuWidth
-                self.cover.hidden = false
+                self.cover.isHidden = false
             } else if self.centerNavController!.view.frame.origin.x <= 0 {
                 self.centerNavController?.view.frame.origin.x = 0
-                self.cover.hidden = true
+                self.cover.isHidden = true
             }
         }
     }
     
     func leftMenuShowAnimate() {
-        UIView.animateWithDuration(animationDuration, animations: { [unowned self]() -> Void in
+        UIView.animate(withDuration: animationDuration, animations: { [unowned self]() -> Void in
             self.centerNavController!.view.frame.origin.x = self.menuWidth
-            self.menuController.view.transform = CGAffineTransformMakeScale(1.0, 1.0)
-            self.cover.hidden = false
-            self.centerNavController.navigationBar.hidden = true
+            self.menuController.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            self.cover.isHidden = false
+            self.centerNavController.navigationBar.isHidden = true
             })
     }
     
     func leftMenuHiddenAnimate() {
-        UIView.animateWithDuration(animationDuration, animations: { [unowned self]() -> Void in
+        UIView.animate(withDuration: animationDuration, animations: { [unowned self]() -> Void in
             self.centerNavController!.view.frame.origin.x = 0
-            self.cover.hidden = true
-            self.centerNavController.navigationBar.hidden = false
+            self.cover.isHidden = true
+            self.centerNavController.navigationBar.isHidden = false
         }) { (finish) -> Void in
-            self.menuController.view.transform = CGAffineTransformMakeScale(0.5, 0.5)
+            self.menuController.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         }
     }
     
@@ -207,7 +207,7 @@ class ZDHomeViewController: UIViewController {
         let controllerType : String = notify.object as! String
         switch controllerType {
         case "发现应用":
-            UIView.animateWithDuration(animationDuration, animations: { () -> Void in
+            UIView.animate(withDuration: animationDuration, animations: { () -> Void in
                 self.view.backgroundColor = UI_COLOR_DEFAULT
             })
             self.controllerType = .Special
