@@ -18,9 +18,9 @@ class ZDBaseNavigationController: UINavigationController,UINavigationControllerD
   }
   
     func setupUI() {
-        self.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.compact)
-        self.navigationBar.shadowImage = UIImage()
-        self.navigationBar.layer.masksToBounds = true
+      self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+      self.navigationBar.shadowImage = UIImage()
+      self.navigationBar.isTranslucent = true
     }
     
     func showMenu() {
