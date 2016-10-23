@@ -44,7 +44,7 @@ class ZDMenuViewController: UIViewController {
   fileprivate func fetchDataSource() {
     let baseUrl = ZDAPIConfig.API_Server + "config"
     let parameters = ZDAPIConfig.API_Parameters
-    Alamofire.request(baseUrl, method: .get, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
+    Alamofire.request(baseUrl, method: .get, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
       switch response.result {
       case .success:
         let json = JSON(response.result.value!)

@@ -80,7 +80,7 @@ class ZDNiceSpecialViewController: UIViewController {
     var parameters = ZDAPIConfig.API_Parameters
     parameters["page"] = String(hotPage)
     parameters["page_size"] = String(defaultPageSize)
-    Alamofire.request(baseHotUrl, method: .get, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
+    Alamofire.request(baseHotUrl, method: .get, parameters: parameters, encoding: URLEncoding.default).responseJSON { (response) in
       switch response.result {
       case .success(let value):
         let json = JSON(value)
@@ -97,7 +97,7 @@ class ZDNiceSpecialViewController: UIViewController {
     var parameters = ZDAPIConfig.API_Parameters
     parameters["page"] = String(recentPage)
     parameters["page_size"] = String(defaultPageSize)
-    Alamofire.request(baseHotUrl, method: .get, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
+    Alamofire.request(baseHotUrl, method: .get, parameters: parameters, encoding: URLEncoding.default).responseJSON { (response) in
       switch response.result {
       case .success(let value):
         let json = JSON(value)
