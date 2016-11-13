@@ -183,7 +183,6 @@ class ZDHomeViewController: UIViewController {
             self.centerNavController!.view.frame.origin.x = self.menuWidth
             self.menuController.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             self.cover.isHidden = false
-            self.centerNavController.navigationBar.isHidden = true
             })
     }
     
@@ -191,7 +190,6 @@ class ZDHomeViewController: UIViewController {
         UIView.animate(withDuration: animationDuration, animations: { [unowned self]() -> Void in
             self.centerNavController!.view.frame.origin.x = 0
             self.cover.isHidden = true
-            self.centerNavController.navigationBar.isHidden = false
         }) { (finish) -> Void in
             self.menuController.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         }

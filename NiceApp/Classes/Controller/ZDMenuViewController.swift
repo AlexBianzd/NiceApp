@@ -71,6 +71,10 @@ class ZDMenuViewController: UIViewController {
 
 extension ZDMenuViewController: UITableViewDelegate {
   
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 50
+  }
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let cell = tableView.cellForRow(at: indexPath) as! ZDMenuTableViewCell
     cell.dotView.isHidden = false
