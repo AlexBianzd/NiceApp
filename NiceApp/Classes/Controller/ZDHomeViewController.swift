@@ -113,7 +113,6 @@ class ZDHomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(ZDHomeViewController.leftMenuSetupCenterView(notify:)), name: NotifyCenter, object: nil)
         
         self.view.bringSubview(toFront: self.centerNavController.view)
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -20,13 +20,14 @@ class ZDNiceSpecialViewController: UIViewController {
   fileprivate var recentTableView: UITableView!
   fileprivate var hotTableFooterView: ZDSpecialTableViewFooterView!
   fileprivate var recentTableFooterView: ZDSpecialTableViewFooterView!
+  fileprivate var hotRefreshControl: UIRefreshControl!
+  fileprivate var recentRefeshControl: UIRefreshControl!
   
   fileprivate var hotRecommendData = [JSON]()
   fileprivate var recentRecommendData = [JSON]()
   
   fileprivate let defaultPageSize = 6
   fileprivate var hotPage = 1
-  fileprivate var recentPage = 1
   fileprivate var hotIsLoadingMore = false
   fileprivate var recentIsLoadingMore = false
   
@@ -68,6 +69,9 @@ class ZDNiceSpecialViewController: UIViewController {
     hotTableView.showsVerticalScrollIndicator = false
     hotTableView!.register(UINib(nibName: "ZDSpecialTableViewCell", bundle: nil), forCellReuseIdentifier: "ZDSpecialTableViewCell")
     containerScrollView.addSubview(hotTableView)
+    hotRefreshControl = UIRefreshControl.init()
+    hotRefreshControl.addTarget(self, action:#selector(refreshHotRecommendData), for: .valueChanged)
+    hotTableView.addSubview(hotRefreshControl)
     
     recentTableView = UITableView.init(frame: CGRect(x: self.view.bounds.size.width, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height - 64), style: .grouped)
     recentTableView.delegate = self
@@ -77,6 +81,20 @@ class ZDNiceSpecialViewController: UIViewController {
     recentTableView.showsVerticalScrollIndicator = false
     recentTableView!.register(UINib(nibName: "ZDSpecialTableViewCell", bundle: nil), forCellReuseIdentifier: "ZDSpecialTableViewCell")
     containerScrollView.addSubview(recentTableView)
+    recentRefeshControl = UIRefreshControl.init()
+    recentRefeshControl.addTarget(self, action:#selector(refreshRecentRecommendData), for: .valueChanged)
+    recentTableView.addSubview(recentRefeshControl)
+  }
+  
+  func refreshHotRecommendData() {
+    hotPage = 1;
+    self.hotRecommendData.removeAll()
+    self.fetchHotRecommendData()
+  }
+  
+  func refreshRecentRecommendData() {
+    self.recentRecommendData.removeAll()
+    self.fetchRecentRecommendData()
   }
   
   fileprivate func fetchHotRecommendData() {
@@ -87,6 +105,7 @@ class ZDNiceSpecialViewController: UIViewController {
     parameters["page_size"] = String(defaultPageSize)
     Alamofire.request(baseHotUrl, method: .get, parameters: parameters, encoding: URLEncoding.default).responseJSON { (response) in
       self.hotIsLoadingMore = false
+      self.hotRefreshControl.endRefreshing()
       switch response.result {
       case .success(let value):
         let json = JSON(value)
@@ -121,6 +140,7 @@ class ZDNiceSpecialViewController: UIViewController {
     parameters["page_size"] = String(defaultPageSize)
     Alamofire.request(baseRecentUrl, method: .get, parameters: parameters, encoding: URLEncoding.default).responseJSON { (response) in
       self.recentIsLoadingMore = false
+      self.recentRefeshControl.endRefreshing()
       switch response.result {
       case .success(let value):
         let json = JSON(value)
@@ -166,7 +186,6 @@ extension ZDNiceSpecialViewController: UITableViewDelegate {
       }
     } else if scrollView == recentTableView {
       if distanceFromBottom < height && !recentIsLoadingMore {
-        recentPage += 1
         self.fetchRecentRecommendData()
       }
     }
