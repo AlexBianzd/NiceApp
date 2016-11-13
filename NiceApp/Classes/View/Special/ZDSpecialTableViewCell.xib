@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lon-f6-JbC">
-                        <rect key="frame" x="12" y="0.0" width="350" height="322.5"/>
+                        <rect key="frame" x="12" y="0.0" width="350" height="323"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_portrait_default" translatesAutoresizingMaskIntoConstraints="NO" id="8eu-Xe-tby">
                                 <rect key="frame" x="10" y="10" width="30" height="30"/>
@@ -146,7 +146,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQ4-ZT-bde">
-                                                <rect key="frame" x="52" y="10.5" width="48" height="20"/>
+                                                <rect key="frame" x="52" y="11" width="48" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="5Hm-0p-qq6"/>
                                                 </constraints>
@@ -238,6 +238,6 @@
         <image name="find_browse" width="48" height="48"/>
         <image name="find_comment" width="48" height="48"/>
         <image name="find_flower" width="48" height="48"/>
-        <image name="menu_portrait_default" width="60" height="60"/>
+        <image name="menu_portrait_default" width="39" height="39"/>
     </resources>
 </document>

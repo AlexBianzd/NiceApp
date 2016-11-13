@@ -25,6 +25,7 @@
 		EAAE168A1D60972000BC8DF3 /* ZDNiceSpecialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE16891D60972000BC8DF3 /* ZDNiceSpecialViewController.swift */; };
 		EAAE16901D60986900BC8DF3 /* ZDNiceSpecialDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE168F1D60986900BC8DF3 /* ZDNiceSpecialDetailViewController.swift */; };
 		EAAE16941D60A3B900BC8DF3 /* UIViewController+ZD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE16931D60A3B900BC8DF3 /* UIViewController+ZD.swift */; };
+		EAD0DEDE1DD8788500A63B1C /* ZDSpecialTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD0DEDD1DD8788500A63B1C /* ZDSpecialTableViewFooterView.swift */; };
 		EADA99981D58C1A1009C6059 /* ZDAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADA99971D58C1A1009C6059 /* ZDAPIConfig.swift */; };
 		EAE0066C1D5F71A000C6F3D6 /* more_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAE0066B1D5F71A000C6F3D6 /* more_data.plist */; };
 		EAFD2F2D1D56BF8200D665DD /* ZDMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD2F2C1D56BF8200D665DD /* ZDMenuViewController.swift */; };
@@ -56,6 +57,7 @@
 		EAAE16891D60972000BC8DF3 /* ZDNiceSpecialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDNiceSpecialViewController.swift; sourceTree = "<group>"; };
 		EAAE168F1D60986900BC8DF3 /* ZDNiceSpecialDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDNiceSpecialDetailViewController.swift; sourceTree = "<group>"; };
 		EAAE16931D60A3B900BC8DF3 /* UIViewController+ZD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ZD.swift"; sourceTree = "<group>"; };
+		EAD0DEDD1DD8788500A63B1C /* ZDSpecialTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDSpecialTableViewFooterView.swift; sourceTree = "<group>"; };
 		EADA99971D58C1A1009C6059 /* ZDAPIConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDAPIConfig.swift; sourceTree = "<group>"; };
 		EAE0066B1D5F71A000C6F3D6 /* more_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = more_data.plist; sourceTree = "<group>"; };
 		EAFD2F2C1D56BF8200D665DD /* ZDMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDMenuViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				EAA5E4191D7F10C2002A1FA4 /* ZDSpecialTableViewCell.swift */,
 				EAA5E41A1D7F10C2002A1FA4 /* ZDSpecialTableViewCell.xib */,
+				EAD0DEDD1DD8788500A63B1C /* ZDSpecialTableViewFooterView.swift */,
 			);
 			path = Special;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 			files = (
 				EAA95CAE1D571BA8002C140F /* ZDMenuHeaderView.swift in Sources */,
 				EAAE16821D60740000BC8DF3 /* UIColor+ZD.swift in Sources */,
+				EAD0DEDE1DD8788500A63B1C /* ZDSpecialTableViewFooterView.swift in Sources */,
 				EA8E8FCE1D58D05C00F0108C /* ZDNiceCommonDetailViewController.swift in Sources */,
 				EAAE16941D60A3B900BC8DF3 /* UIViewController+ZD.swift in Sources */,
 				EA66C25E1D55FAF20000C6D9 /* AppDelegate.swift in Sources */,
