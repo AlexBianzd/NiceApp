@@ -16,7 +16,7 @@ class ZDBaseNavigationController: UINavigationController,UINavigationControllerD
   override func viewDidLoad() {
     super.viewDidLoad()
     self.interactivePopGestureRecognizer?.isEnabled = false
-    panGesture = UIPanGestureRecognizer.init(target: self, action: #selector(ZDBaseNavigationController.handlePanGesture(gesture:)))
+    panGesture = UIPanGestureRecognizer.init(target: self, action: #selector(ZDBaseNavigationController.panGestureBack(gesture:)))
     panGesture.delegate = self
     self.view.addGestureRecognizer(panGesture)
     self.setupUI()
@@ -84,8 +84,29 @@ class ZDBaseNavigationController: UINavigationController,UINavigationControllerD
     return super.popToRootViewController(animated: animated)
   }
   
-// MARK: - Gesture
-  func handlePanGesture(gesture : UIPanGestureRecognizer) {
+// MARK: - back method
+  func touchBack() {
+    let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    let rootVC = appDelegate.window?.rootViewController
+    let presentedVC = rootVC?.presentedViewController
+    appDelegate.screenshotView.isHidden = false
+      rootVC?.view.transform = CGAffineTransform.init(translationX:  10, y: 0)
+      presentedVC?.view.transform = CGAffineTransform.init(translationX:  10, y: 0)
+    UIView.animate(withDuration: 0.3, animations: {
+      rootVC?.view.transform = CGAffineTransform.init(translationX: 320, y: 0)
+      presentedVC?.view.transform = CGAffineTransform.init(translationX: 320, y: 0)
+    }, completion: { (finished : Bool) in
+      if finished == true {
+        self.popViewController(animated: false)
+        rootVC?.view.transform = CGAffineTransform.identity;
+        presentedVC?.view.transform =  CGAffineTransform.identity;
+        appDelegate.screenshotView.isHidden = true;
+      }
+    })
+
+  }
+  
+  func panGestureBack(gesture : UIPanGestureRecognizer) {
     let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
     let rootVC = appDelegate.window?.rootViewController
     let presentedVC = rootVC?.presentedViewController
@@ -124,7 +145,9 @@ class ZDBaseNavigationController: UINavigationController,UINavigationControllerD
       }
     }
   }
+
   
+// MARK: - Gesture
   func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     if gestureRecognizer.isKind(of: NSClassFromString("UIPanGestureRecognizer")!) {
       let panGesture : UIPanGestureRecognizer = gestureRecognizer as! UIPanGestureRecognizer

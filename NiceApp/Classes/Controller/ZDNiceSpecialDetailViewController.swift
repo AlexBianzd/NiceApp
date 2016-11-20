@@ -10,40 +10,43 @@ import UIKit
 import SwiftyJSON
 
 class ZDNiceSpecialDetailViewController: UIViewController {
-    
-    fileprivate var datasource = [String:JSON]()
-
-    init(datasource : Dictionary<String,JSON>) {
-        super.init(nibName: nil, bundle: nil)
-        self.datasource = datasource
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = UIColor.green
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  
+  fileprivate var datasource = [String:JSON]()
+  
+  init(datasource : Dictionary<String,JSON>) {
+    super.init(nibName: nil, bundle: nil)
+    self.datasource = datasource
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.view.backgroundColor = UIColor.green
+    self.navigationController?.navigationBar.isHidden = true
+    let backBtn = UIButton.init(type: .custom)
+    backBtn.frame = CGRect.init(x: 15, y: 15, width: 35, height: 35)
+    backBtn.backgroundColor = UIColor.blue
+    backBtn.addTarget(self, action: #selector(back), for: .touchUpInside)
+    self.view.addSubview(backBtn)
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.navigationController?.setNavigationBarHidden(true, animated: animated)
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    self.navigationController?.setNavigationBarHidden(false, animated: animated)
+  }
+  
+  func back() {
+    let navCon = self.navigationController as! ZDBaseNavigationController
+    navCon.touchBack()
+  }
 }
