@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
+  var screenshotView: ZDScreenShotView!
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
     window = UIWindow(frame: UIScreen.main.bounds)
@@ -19,9 +20,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let menuStoryboard = UIStoryboard.init(name: "Menu", bundle: nil)
     let menuVc = menuStoryboard.instantiateViewController(withIdentifier: "MENU")
-    
     window?.rootViewController = ZDHomeViewController.init(centerNavController: ZDBaseNavigationController(rootViewController:ZDNiceCommonViewController()), menuController: menuVc)
+    
+    screenshotView = ZDScreenShotView.init(frame: window!.bounds)
+    window?.insertSubview(screenshotView, at: 0)
+    window?.rootViewController?.view.addObserver(self, forKeyPath: "transform", options: .new, context: nil)
+    
     return true
+  }
+  
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    let value : NSValue = change?[.newKey] as! NSValue
+    let newTransform : CGAffineTransform = value.cgAffineTransformValue
+    screenshotView.showEffectChange(point: CGPoint.init(x: newTransform.tx, y: 0))
   }
   
   func applicationWillResignActive(_ application: UIApplication) {

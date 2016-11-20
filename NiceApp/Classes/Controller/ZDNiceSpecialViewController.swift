@@ -30,6 +30,8 @@ class ZDNiceSpecialViewController: UIViewController {
   fileprivate var hotPage = 1
   fileprivate var hotIsLoadingMore = false
   fileprivate var recentIsLoadingMore = false
+  fileprivate var hotIsRefreshing = false
+  fileprivate var recentIsRefreshing = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -87,25 +89,28 @@ class ZDNiceSpecialViewController: UIViewController {
   }
   
   func refreshHotRecommendData() {
-    hotPage = 1;
-    self.hotRecommendData.removeAll()
-    self.fetchHotRecommendData()
+    if !hotIsRefreshing {
+      hotPage = 1;
+      self.hotRecommendData.removeAll()
+      self.fetchHotRecommendData()
+    }
   }
   
   func refreshRecentRecommendData() {
-    self.recentRecommendData.removeAll()
-    self.fetchRecentRecommendData()
+    if !recentIsRefreshing {
+      self.recentRecommendData.removeAll()
+      self.fetchRecentRecommendData()
+    }
   }
   
   fileprivate func fetchHotRecommendData() {
+    hotIsRefreshing  = true
     hotIsLoadingMore = true
     let baseHotUrl = ZDAPIConfig.API_Server + "community/recommend_apps"
     var parameters = ZDAPIConfig.API_Parameters
     parameters["page"] = String(hotPage)
     parameters["page_size"] = String(defaultPageSize)
     Alamofire.request(baseHotUrl, method: .get, parameters: parameters, encoding: URLEncoding.default).responseJSON { (response) in
-      self.hotIsLoadingMore = false
-      self.hotRefreshControl.endRefreshing()
       switch response.result {
       case .success(let value):
         let json = JSON(value)
@@ -124,10 +129,13 @@ class ZDNiceSpecialViewController: UIViewController {
       case .failure(let error):
         print(error)
       }
-      
+      self.hotIsLoadingMore = false
+      self.hotIsRefreshing  = false
+      self.hotRefreshControl.endRefreshing()
     }
   }
   fileprivate func fetchRecentRecommendData() {
+    recentIsRefreshing  = true
     recentIsLoadingMore = true
     let baseRecentUrl = ZDAPIConfig.API_Server + "community/apps"
     var parameters = ZDAPIConfig.API_Parameters
@@ -139,8 +147,6 @@ class ZDNiceSpecialViewController: UIViewController {
     }
     parameters["page_size"] = String(defaultPageSize)
     Alamofire.request(baseRecentUrl, method: .get, parameters: parameters, encoding: URLEncoding.default).responseJSON { (response) in
-      self.recentIsLoadingMore = false
-      self.recentRefeshControl.endRefreshing()
       switch response.result {
       case .success(let value):
         let json = JSON(value)
@@ -159,7 +165,9 @@ class ZDNiceSpecialViewController: UIViewController {
       case .failure(let error):
         print(error)
       }
-      
+      self.recentIsLoadingMore = false
+      self.recentIsRefreshing  = false
+      self.recentRefeshControl.endRefreshing()
     }
   }
   
