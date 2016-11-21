@@ -12,6 +12,7 @@ import SwiftyJSON
 class ZDNiceSpecialDetailViewController: UIViewController {
   
   fileprivate var datasource = [String:JSON]()
+  fileprivate var container  = UIScrollView()
   
   init(datasource : Dictionary<String,JSON>) {
     super.init(nibName: nil, bundle: nil)
@@ -33,6 +34,7 @@ class ZDNiceSpecialDetailViewController: UIViewController {
     backBtn.backgroundColor = UIColor.blue
     backBtn.addTarget(self, action: #selector(back), for: .touchUpInside)
     self.view.addSubview(backBtn)
+    self.setupUI()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -48,5 +50,83 @@ class ZDNiceSpecialDetailViewController: UIViewController {
   func back() {
     let navCon = self.navigationController as! ZDBaseNavigationController
     navCon.touchBack()
+  }
+  
+  func setupUI() {
+    container.frame = self.view.bounds
+    self.view.addSubview(container)
+    
+    let authorAvatar = UIImageView()
+    authorAvatar.clipsToBounds = true
+    authorAvatar.layer.cornerRadius = 35 / 2
+    authorAvatar.kf.setImage(with: URL(string: (self.datasource["author_avatar_url"]?.stringValue)!),
+                             placeholder: nil,
+                             options: [.transition(.fade(1))],
+                             progressBlock: nil,
+                             completionHandler: nil)
+    container.addSubview(authorAvatar)
+    authorAvatar.snp.makeConstraints { (make) in
+      make.width.height.equalTo(35)
+      make.centerX.equalTo(self.view.snp.right).offset(-44 / 2)
+      make.centerY.equalTo(container.snp.top).offset(20 + 44 / 2)
+    }
+    
+    let authorName = UILabel()
+    authorName.font = UIFont.systemFont(ofSize: 13)
+    authorName.textColor = UIColor.black
+    authorName.textAlignment = .right
+    authorName.text = self.datasource["author_name"]?.stringValue
+    container.addSubview(authorName)
+    authorName.snp.makeConstraints { (make) in
+      make.width.equalTo(150)
+      make.height.equalTo(35 / 2)
+      make.right.equalTo(authorAvatar.snp.left).offset(-10)
+      make.bottom.equalTo(authorAvatar.snp.centerY)
+    }
+    
+    let authorCareer = UILabel()
+    authorCareer.font = UIFont.systemFont(ofSize: 12)
+    authorCareer.textColor = UIColor.gray
+    authorCareer.textAlignment = .right
+    authorCareer.text = self.datasource["author_career"]?.stringValue
+    container.addSubview(authorCareer)
+    authorCareer.snp.makeConstraints { (make) in
+      make.width.equalTo(150)
+      make.height.equalTo(35 / 2)
+      make.right.equalTo(authorAvatar.snp.left).offset(-10)
+      make.top.equalTo(authorAvatar.snp.centerY)
+    }
+    
+    let separatorLine = UIView.init(frame: CGRect.init(x: 0, y: 64, width: container.bounds.size.width, height: 1))
+    separatorLine.backgroundColor = UIColor.lightGray
+    container.addSubview(separatorLine)
+    
+    let iconImage = UIImageView()
+    iconImage.clipsToBounds = true
+    iconImage.layer.cornerRadius = 10
+    iconImage.kf.setImage(with: URL(string: (self.datasource["icon_image"]?.stringValue)!),
+                          placeholder: nil,
+                          options: [.transition(.fade(1))],
+                          progressBlock: nil,
+                          completionHandler: nil)
+    container.addSubview(iconImage)
+    iconImage.snp.makeConstraints { (make) in
+      make.width.height.equalTo(50)
+      make.left.equalTo(container).offset(15)
+      make.top.equalTo(separatorLine.snp.bottom).offset(15)
+    }
+    
+    let appName = UILabel()
+    appName.font = UIFont.systemFont(ofSize: 18)
+    appName.textColor = UIColor.black
+    appName.textAlignment = .left
+    appName.text = self.datasource["app_name"]?.stringValue
+    container.addSubview(appName)
+    appName.snp.makeConstraints { (make) in
+      make.height.equalTo(50)
+      make.centerY.equalTo(iconImage)
+      make.left.equalTo(iconImage.snp.right).offset(10)
+      make.right.equalTo(container).offset(-10)
+    }
   }
 }

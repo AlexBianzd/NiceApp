@@ -235,11 +235,11 @@ extension ZDNiceSpecialViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch self.titleSegment.selectedSegmentIndex {
     case 0:
-      let detail = ZDNiceSpecialDetailViewController(datasource:self.hotRecommendData[indexPath.item].dictionaryValue)
+      let detail = ZDNiceSpecialDetailViewController(datasource:self.hotRecommendData[indexPath.section].dictionaryValue)
       self.navigationController!.pushViewController(detail, animated: true)
       
     case 1:
-      let detail = ZDNiceSpecialDetailViewController(datasource:self.recentRecommendData[indexPath.item].dictionaryValue)
+      let detail = ZDNiceSpecialDetailViewController(datasource:self.recentRecommendData[indexPath.section].dictionaryValue)
       self.navigationController!.pushViewController(detail, animated: true)
       
     default:
@@ -270,10 +270,18 @@ extension ZDNiceSpecialViewController: UITableViewDataSource {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ZDSpecialTableViewCell", for: indexPath) as! ZDSpecialTableViewCell
     var json = JSON.init(nilLiteral: ())
     if tableView == self.hotTableView {
-      json = self.hotRecommendData[indexPath.section]
+      if self.hotRecommendData.count > indexPath.section {
+        json = self.hotRecommendData[indexPath.section]
+      } else {
+        return cell
+      }
     }
     if tableView == self.recentTableView {
-      json = self.recentRecommendData[indexPath.section]
+      if self.recentRecommendData.count > indexPath.section {
+        json = self.recentRecommendData[indexPath.section]
+      } else {
+        return cell
+      }
     }
     
     cell.authorAvatar.kf.setImage(with: URL(string: json["author_avatar_url"].stringValue),

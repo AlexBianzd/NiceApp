@@ -93,8 +93,8 @@ class ZDBaseNavigationController: UINavigationController,UINavigationControllerD
       rootVC?.view.transform = CGAffineTransform.init(translationX:  10, y: 0)
       presentedVC?.view.transform = CGAffineTransform.init(translationX:  10, y: 0)
     UIView.animate(withDuration: 0.3, animations: {
-      rootVC?.view.transform = CGAffineTransform.init(translationX: 320, y: 0)
-      presentedVC?.view.transform = CGAffineTransform.init(translationX: 320, y: 0)
+      rootVC?.view.transform = CGAffineTransform.init(translationX: self.view.bounds.size.width, y: 0)
+      presentedVC?.view.transform = CGAffineTransform.init(translationX: self.view.bounds.size.width, y: 0)
     }, completion: { (finished : Bool) in
       if finished == true {
         self.popViewController(animated: false)
