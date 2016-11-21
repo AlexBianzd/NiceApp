@@ -121,12 +121,25 @@ class ZDNiceSpecialDetailViewController: UIViewController {
     appName.textColor = UIColor.black
     appName.textAlignment = .left
     appName.text = self.datasource["app_name"]?.stringValue
+    appName.numberOfLines = 0
     container.addSubview(appName)
     appName.snp.makeConstraints { (make) in
       make.height.equalTo(50)
       make.centerY.equalTo(iconImage)
       make.left.equalTo(iconImage.snp.right).offset(10)
-      make.right.equalTo(container).offset(-10)
+      make.right.equalTo(self.view).offset(-10)
     }
+    
+    let description = UILabel()
+    description.backgroundColor = UIColor.blue
+    container.addSubview(description)
+    description.snp.makeConstraints { (make) in
+      make.top.equalTo(appName.snp.bottom).offset(60)
+      make.height.equalTo(1000)
+      make.left.equalTo(self.view).offset(10)
+      make.right.equalTo(self.view).offset(-10)
+    }
+    
+    container.contentSize = CGSize.init(width: 0, height: 1000)
   }
 }
