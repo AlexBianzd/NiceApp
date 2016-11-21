@@ -328,7 +328,7 @@
 			attributes = {
 				CLASSPREFIX = ZD;
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "边振东";
 				TargetAttributes = {
 					EA66C2591D55FAF20000C6D9 = {
