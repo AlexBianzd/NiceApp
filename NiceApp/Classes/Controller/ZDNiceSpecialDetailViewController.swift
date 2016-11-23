@@ -176,6 +176,39 @@ class ZDNiceSpecialDetailViewController: UIViewController {
       contentY += size.height + 10
     }
     
+    let up_users = datasource["up_users"]?.arrayValue
+    if up_users?.count != 0 {
+      let up_user = UILabel()
+      up_user.font = UIFont.systemFont(ofSize: 16)
+      up_user.text = "美过的美友"
+      up_user.textColor = UIColor.black
+      container.addSubview(up_user)
+      up_user.frame = CGRect.init(x: 10, y: contentY + 10 * 2, width: 85, height: 20)
+      
+      let line = UIView()
+      line.backgroundColor = UIColor.lightGray
+      container.addSubview(line)
+      line.frame = CGRect.init(x: up_user.frame.maxX + 10, y: up_user.center.y, width: self.view.bounds.size.width - up_user.frame.maxX - 20, height: 0.5)
+      contentY = up_user.frame.maxY+10;
+      
+      let imgMargin : CGFloat = (self.view.bounds.size.width-2*10-8*36)/7
+      for i in 0..<up_users!.count {
+        let userImg = UIImageView.init()
+        userImg.layer.cornerRadius = 18
+        userImg.clipsToBounds = true
+        userImg.frame = CGRect.init(x: 10+CGFloat(i%8)*(36+imgMargin), y: contentY + (36+imgMargin) * CGFloat(i/8), width: 36, height: 36)
+        container.addSubview(userImg)
+        userImg.kf.setImage(with: URL(string:up_users![i]["avatar_url"].stringValue),
+                            placeholder: nil,
+                            options: [.transition(.fade(1))],
+                            progressBlock: nil,
+                            completionHandler: nil)
+        if i == (up_users?.count)! - 1 {
+          contentY = userImg.frame.maxY;
+        }
+      }
+    }
+    
     container.contentSize = CGSize.init(width: 0, height: contentY)
   }
   
