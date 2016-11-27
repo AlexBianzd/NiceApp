@@ -18,8 +18,8 @@ class ZDNiceSpecialViewController: UIViewController {
   fileprivate var containerScrollView: UIScrollView!
   fileprivate var hotTableView: UITableView!
   fileprivate var recentTableView: UITableView!
-  fileprivate var hotTableFooterView: ZDSpecialTableViewFooterView!
-  fileprivate var recentTableFooterView: ZDSpecialTableViewFooterView!
+  fileprivate var hotTableFooterView: ZDTableViewFooterView!
+  fileprivate var recentTableFooterView: ZDTableViewFooterView!
   fileprivate var hotRefreshControl: UIRefreshControl!
   fileprivate var recentRefeshControl: UIRefreshControl!
   
@@ -117,8 +117,7 @@ class ZDNiceSpecialViewController: UIViewController {
         let hadNext = json["data"]["has_next"].boolValue
         if hadNext {
           if self.hotTableView.tableFooterView == nil {
-            self.hotTableFooterView = ZDSpecialTableViewFooterView.init(reuseIdentifier: "hot")
-            self.hotTableFooterView.frame = CGRect.init(x: 0, y: 0, width: 100, height: 40)
+            self.hotTableFooterView = ZDTableViewFooterView.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 40))
             self.hotTableView.tableFooterView = self.hotTableFooterView
           }
         } else {
@@ -153,7 +152,7 @@ class ZDNiceSpecialViewController: UIViewController {
         let hadNext = json["data"]["has_next"].boolValue
         if hadNext {
           if self.recentTableView.tableFooterView == nil {
-            self.recentTableFooterView = ZDSpecialTableViewFooterView.init(reuseIdentifier: "hot")
+            self.recentTableFooterView = ZDTableViewFooterView.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 40))
             self.recentTableFooterView.frame = CGRect.init(x: 0, y: 0, width: 100, height: 40)
             self.recentTableView.tableFooterView = self.recentTableFooterView
           }

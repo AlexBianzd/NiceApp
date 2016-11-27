@@ -12,11 +12,13 @@ import SwiftyJSON
 class ZDNiceSpecialDetailViewController: UIViewController {
   
   fileprivate var datasource = [String:JSON]()
-  fileprivate var container  = UIScrollView()
+  fileprivate var comments = [JSON]()
+  fileprivate var container  = UIView()
   
   init(datasource : Dictionary<String,JSON>) {
     super.init(nibName: nil, bundle: nil)
     self.datasource = datasource
+    self.comments = datasource["comments"]!.arrayValue
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -52,32 +54,28 @@ class ZDNiceSpecialDetailViewController: UIViewController {
     navCon.touchBack()
   }
   
-  func setupUI() {
+  //MARK: UI
+  private func setupUI() {
+    self.view.backgroundColor = .white
+    
+    let tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height), style: .grouped)
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.backgroundColor = .white
+    tableView.separatorStyle = .none
+    tableView.showsVerticalScrollIndicator = false
+    tableView.register(UINib(nibName: "ZDCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "ZDCommentTableViewCell")
+    self.view.addSubview(tableView)
+    
     container.frame = self.view.bounds
     self.view.addSubview(container)
-    
     var contentY : CGFloat = 0
-    
-    let authorAvatar = UIImageView()
-    authorAvatar.clipsToBounds = true
-    authorAvatar.layer.cornerRadius = 35 / 2
-    authorAvatar.kf.setImage(with: URL(string: (datasource["author_avatar_url"]?.stringValue)!),
-                             placeholder: nil,
-                             options: [.transition(.fade(1))],
-                             progressBlock: nil,
-                             completionHandler: nil)
     container.addSubview(authorAvatar)
     authorAvatar.snp.makeConstraints { (make) in
       make.width.height.equalTo(35)
-      make.centerX.equalTo(self.view.snp.right).offset(-44 / 2)
-      make.centerY.equalTo(container.snp.top).offset(20 + 44 / 2)
+      make.centerX.equalTo(container.snp.right).offset(-44 / 2)
+      make.centerY.equalTo(container.snp.top).offset(44 / 2)
     }
-    
-    let authorName = UILabel()
-    authorName.font = UIFont.systemFont(ofSize: 13)
-    authorName.textColor = UIColor.black
-    authorName.textAlignment = .right
-    authorName.text = datasource["author_name"]?.stringValue
     container.addSubview(authorName)
     authorName.snp.makeConstraints { (make) in
       make.width.equalTo(150)
@@ -85,12 +83,6 @@ class ZDNiceSpecialDetailViewController: UIViewController {
       make.right.equalTo(authorAvatar.snp.left).offset(-10)
       make.bottom.equalTo(authorAvatar.snp.centerY)
     }
-    
-    let authorCareer = UILabel()
-    authorCareer.font = UIFont.systemFont(ofSize: 12)
-    authorCareer.textColor = UIColor.gray
-    authorCareer.textAlignment = .right
-    authorCareer.text = datasource["author_career"]?.stringValue
     container.addSubview(authorCareer)
     authorCareer.snp.makeConstraints { (make) in
       make.width.equalTo(150)
@@ -98,34 +90,16 @@ class ZDNiceSpecialDetailViewController: UIViewController {
       make.right.equalTo(authorAvatar.snp.left).offset(-10)
       make.top.equalTo(authorAvatar.snp.centerY)
     }
-    
-    let separatorLine = UIView.init(frame: CGRect.init(x: 0, y: 64, width: container.bounds.size.width, height: 1))
+    let separatorLine = UIView.init(frame: CGRect.init(x: 0, y: 44, width: container.bounds.size.width, height: 1))
     separatorLine.backgroundColor = UIColor.lightGray
     container.addSubview(separatorLine)
-    
-    contentY += 64
-    
-    let iconImage = UIImageView()
-    iconImage.clipsToBounds = true
-    iconImage.layer.cornerRadius = 10
-    iconImage.kf.setImage(with: URL(string: (datasource["icon_image"]?.stringValue)!),
-                          placeholder: nil,
-                          options: [.transition(.fade(1))],
-                          progressBlock: nil,
-                          completionHandler: nil)
+    contentY += 44
     container.addSubview(iconImage)
     iconImage.snp.makeConstraints { (make) in
       make.width.height.equalTo(50)
       make.left.equalTo(container).offset(15)
       make.top.equalTo(separatorLine.snp.bottom).offset(15)
     }
-    
-    let appName = UILabel()
-    appName.font = UIFont.systemFont(ofSize: 18)
-    appName.textColor = UIColor.black
-    appName.textAlignment = .left
-    appName.text = datasource["app_name"]?.stringValue
-    appName.numberOfLines = 0
     container.addSubview(appName)
     appName.snp.makeConstraints { (make) in
       make.height.equalTo(50)
@@ -133,9 +107,21 @@ class ZDNiceSpecialDetailViewController: UIViewController {
       make.left.equalTo(iconImage.snp.right).offset(10)
       make.right.equalTo(self.view).offset(-10)
     }
-    
     contentY += 15 + 50
-    
+    let rect = self.setupDescriptionUI()
+    contentY += 60 + rect.size.height
+    contentY += 10
+    contentY = self.setupImagesUI(contentY: &contentY)
+    contentY = self.setupUpUsersUI(contentY: &contentY)
+    contentY += 10
+    container.frame = CGRect.init(x: 0, y: 0, width: self.view.bounds.size.width, height: contentY)
+    tableView.tableHeaderView = container
+
+    let footer = ZDTableViewFooterView.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 40))
+    tableView.tableFooterView = footer
+  }
+  
+  private func setupDescriptionUI() -> CGRect {
     let descriptionText = datasource["description"]?.stringValue.replacingOccurrences(of: "<br/>", with: "\n")
     let descriptionAttText = NSMutableAttributedString.init(string: descriptionText!)
     let range = NSMakeRange(0, descriptionAttText.length)
@@ -144,21 +130,21 @@ class ZDNiceSpecialDetailViewController: UIViewController {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.lineSpacing = 5.0
     descriptionAttText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
-    let rect = descriptionAttText.boundingRect(with: CGSize.init(width: self.view.bounds.size.width - 20, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, context: nil)
     let description = UILabel()
     description.attributedText = descriptionAttText
     description.numberOfLines = 0
     container.addSubview(description)
+    let rect = descriptionAttText.boundingRect(with: CGSize.init(width: self.view.bounds.size.width - 20, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, context: nil)
     description.snp.makeConstraints { (make) in
       make.top.equalTo(appName.snp.bottom).offset(60)
       make.height.equalTo(rect.size.height)
-      make.left.equalTo(self.view).offset(10)
-      make.right.equalTo(self.view).offset(-10)
+      make.left.equalTo(container).offset(10)
+      make.right.equalTo(container).offset(-10)
     }
-    
-    contentY += 60 + rect.size.height
-    
-    contentY += 10 
+    return rect
+  }
+  
+  private func setupImagesUI(contentY: inout CGFloat) -> CGFloat {
     let all_images = datasource["all_images"]?.arrayValue
     for i in 0..<all_images!.count {
       let url : String = all_images![i].stringValue
@@ -175,7 +161,10 @@ class ZDNiceSpecialDetailViewController: UIViewController {
                           completionHandler: nil)
       contentY += size.height + 10
     }
-    
+    return contentY
+  }
+  
+  private func setupUpUsersUI(contentY: inout CGFloat) -> CGFloat {
     let up_users = datasource["up_users"]?.arrayValue
     if up_users?.count != 0 {
       let up_user = UILabel()
@@ -183,7 +172,7 @@ class ZDNiceSpecialDetailViewController: UIViewController {
       up_user.text = "美过的美友"
       up_user.textColor = UIColor.black
       container.addSubview(up_user)
-      up_user.frame = CGRect.init(x: 10, y: contentY + 10 * 2, width: 85, height: 20)
+      up_user.frame = CGRect.init(x: 10, y: contentY + 5, width: 80, height: 20)
       
       let line = UIView()
       line.backgroundColor = UIColor.lightGray
@@ -192,27 +181,54 @@ class ZDNiceSpecialDetailViewController: UIViewController {
       contentY = up_user.frame.maxY+10;
       
       let imgMargin : CGFloat = (self.view.bounds.size.width-2*10-8*36)/7
-      for i in 0..<up_users!.count {
-        let userImg = UIImageView.init()
-        userImg.layer.cornerRadius = 18
-        userImg.clipsToBounds = true
-        userImg.frame = CGRect.init(x: 10+CGFloat(i%8)*(36+imgMargin), y: contentY + (36+imgMargin) * CGFloat(i/8), width: 36, height: 36)
-        container.addSubview(userImg)
-        userImg.kf.setImage(with: URL(string:up_users![i]["avatar_url"].stringValue),
-                            placeholder: nil,
-                            options: [.transition(.fade(1))],
-                            progressBlock: nil,
-                            completionHandler: nil)
-        if i == (up_users?.count)! - 1 {
-          contentY = userImg.frame.maxY;
+      if up_users!.count <= 18 {
+        for i in 0..<up_users!.count {
+          let userImg = UIImageView.init()
+          userImg.layer.cornerRadius = 18
+          userImg.clipsToBounds = true
+          userImg.frame = CGRect.init(x: 10+CGFloat(i%8)*(36+imgMargin),
+                                      y: contentY + (36+imgMargin) * CGFloat(i/8),
+                                      width: 36,
+                                      height: 36)
+          container.addSubview(userImg)
+          userImg.kf.setImage(with: URL(string:up_users![i]["avatar_url"].stringValue),
+                              placeholder: nil,
+                              options: [.transition(.fade(1))],
+                              progressBlock: nil,
+                              completionHandler: nil)
+          if i == (up_users?.count)! - 1 {
+            contentY = userImg.frame.maxY;
+          }
         }
+      } else {
+        let upusersContainer = UIScrollView()
+        upusersContainer.showsHorizontalScrollIndicator = false
+        upusersContainer.frame = CGRect.init(x: 0, y: contentY, width: self.view.bounds.size.width, height: 36 * 2 + imgMargin)
+        upusersContainer.contentSize = CGSize.init(width:  10+NSInteger(up_users!.count/2)*NSInteger(36+imgMargin), height: 0)
+        container.addSubview(upusersContainer)
+        for i in 0..<up_users!.count {
+          let userImg = UIImageView.init()
+          userImg.layer.cornerRadius = 18
+          userImg.clipsToBounds = true
+          userImg.frame = CGRect.init(x: 10+CGFloat(NSInteger(i/2)%NSInteger(up_users!.count/2))*(36+imgMargin),
+                                      y: CGFloat(i%2)*(36+imgMargin),
+                                      width: 36,
+                                      height: 36)
+          upusersContainer.addSubview(userImg)
+          userImg.kf.setImage(with: URL(string:up_users![i]["avatar_url"].stringValue),
+                              placeholder: nil,
+                              options: [.transition(.fade(1))],
+                              progressBlock: nil,
+                              completionHandler: nil)
+        }
+        contentY += upusersContainer.bounds.size.height
       }
     }
-    
-    container.contentSize = CGSize.init(width: 0, height: contentY)
+    return contentY
   }
   
-  func sizeWithUrl(_ url : String) -> CGSize {
+  //MARK: private method
+  private func sizeWithUrl(_ url : String) -> CGSize {
     let start = url.characters.index(after: url.characters.index(of: "_")!)
     let end = url.characters.index(of: "?")
     var c = url.substring(to: end!).substring(from: start)
@@ -224,5 +240,108 @@ class ZDNiceSpecialDetailViewController: UIViewController {
     let width  = self.view.bounds.size.width - 20
     let height = width * CGFloat(imgHeight! / imgWidth!)
     return CGSize.init(width: width, height: height)
+  }
+  
+  //MARK: Lazy
+  lazy var authorAvatar: UIImageView = {
+    let authorAvatar = UIImageView()
+    authorAvatar.clipsToBounds = true
+    authorAvatar.layer.cornerRadius = 35 / 2
+    authorAvatar.kf.setImage(with: URL(string: (self.datasource["author_avatar_url"]?.stringValue)!),
+                             placeholder: nil,
+                             options: [.transition(.fade(1))],
+                             progressBlock: nil,
+                             completionHandler: nil)
+    return authorAvatar
+  }()
+  
+  lazy var authorName: UILabel = {
+    let authorName = UILabel()
+    authorName.font = UIFont.systemFont(ofSize: 13)
+    authorName.textColor = UIColor.black
+    authorName.textAlignment = .right
+    authorName.text = self.datasource["author_name"]?.stringValue
+    return authorName
+  }()
+  
+  lazy var authorCareer: UILabel = {
+    let authorCareer = UILabel()
+    authorCareer.font = UIFont.systemFont(ofSize: 12)
+    authorCareer.textColor = UIColor.gray
+    authorCareer.textAlignment = .right
+    authorCareer.text = self.datasource["author_career"]?.stringValue
+    return authorCareer
+  }()
+  
+  lazy var iconImage: UIImageView = {
+    let iconImage = UIImageView()
+    iconImage.clipsToBounds = true
+    iconImage.layer.cornerRadius = 10
+    iconImage.kf.setImage(with: URL(string: (self.datasource["icon_image"]?.stringValue)!),
+                          placeholder: nil,
+                          options: [.transition(.fade(1))],
+                          progressBlock: nil,
+                          completionHandler: nil)
+    return iconImage
+  }()
+  
+  lazy var appName: UILabel = {
+    let appName = UILabel()
+    appName.font = UIFont.systemFont(ofSize: 18)
+    appName.textColor = UIColor.black
+    appName.textAlignment = .left
+    appName.text = self.datasource["app_name"]?.stringValue
+    appName.numberOfLines = 0
+    return appName
+  }()
+}
+
+// MARK: - UITableViewDelegate
+extension ZDNiceSpecialDetailViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+  return 10
+  }
+  
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 0.001
+  }
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    let content = self.comments[indexPath.section]["content"].stringValue.replacingOccurrences(of: "<br/>", with: "\n").replacingOccurrences(of: "<br />", with: "\n")
+    let contentAttText = NSMutableAttributedString.init(string: content)
+    let range = NSMakeRange(0, contentAttText.length)
+    contentAttText.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 12), range: range)
+    let rect = contentAttText.boundingRect(with: CGSize.init(width: self.view.bounds.size.width - 20, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, context: nil)
+    return rect.size.height + 15 + 23 + 30
+  }
+}
+
+// MARK: - UITableViewDataSource
+extension ZDNiceSpecialDetailViewController: UITableViewDataSource {
+  func numberOfSections(in tableView: UITableView) -> Int {
+    let count = self.comments.last?["count"].intValue
+    if self.comments.count == count || self.comments.count == 0 {
+      tableView.tableFooterView = nil
+    }
+    return self.comments.count
+  }
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ZDCommentTableViewCell", for: indexPath) as! ZDCommentTableViewCell
+    var model = self.comments[indexPath.section]
+    cell.author_avatar.kf.setImage(with: URL(string: (model["author_avatar_url"].stringValue)),
+                                   placeholder: nil,
+                                   options: [.transition(.fade(1))],
+                                   progressBlock: nil,
+                                   completionHandler: nil)
+    cell.author_name.text = model["author_name"].stringValue
+    cell.author_career.text = model["author_career"].stringValue
+    cell.updated_at.text = model["updated_at"].stringValue
+    let content = model["content"].stringValue.replacingOccurrences(of: "<br/>", with: "\n").replacingOccurrences(of: "<br />", with: "\n")
+    cell.content.text = content
+    return cell
   }
 }
