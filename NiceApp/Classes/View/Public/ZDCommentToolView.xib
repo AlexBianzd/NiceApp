@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="t_drag" translatesAutoresizingMaskIntoConstraints="NO" id="eJx-HR-TOe">
+                    <rect key="frame" x="12" y="13.5" width="7" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="7" id="Fvd-FQ-EdX"/>
+                        <constraint firstAttribute="height" constant="17" id="GqQ-Ek-1oN"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVT-Rj-63Y" customClass="ZDBaseView" customModule="NiceApp" customModuleProvider="target">
+                    <rect key="frame" x="30" y="7" width="315" height="30"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="写下您的意见吧" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldc-3j-kn8">
+                            <rect key="frame" x="15" y="0.0" width="275" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="y1X-Mh-E4t"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="AKT-16-q0Y"/>
+                        <constraint firstAttribute="trailing" secondItem="Ldc-3j-kn8" secondAttribute="trailing" constant="25" id="PA2-u9-gFL"/>
+                        <constraint firstItem="Ldc-3j-kn8" firstAttribute="leading" secondItem="EVT-Rj-63Y" secondAttribute="leading" constant="15" id="f7s-h4-Pb2"/>
+                        <constraint firstItem="Ldc-3j-kn8" firstAttribute="centerY" secondItem="EVT-Rj-63Y" secondAttribute="centerY" id="lzh-kv-npk"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.91399718835757837" green="0.91275103771221411" blue="0.93451818551450783" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="eJx-HR-TOe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="8c3-MY-0C1"/>
+                <constraint firstAttribute="trailing" secondItem="EVT-Rj-63Y" secondAttribute="trailing" constant="30" id="Zbi-Hb-MHr"/>
+                <constraint firstItem="EVT-Rj-63Y" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="aeK-Xk-p0L"/>
+                <constraint firstItem="EVT-Rj-63Y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="kc4-Yq-dCT"/>
+                <constraint firstItem="eJx-HR-TOe" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rMr-n8-2iT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="t_drag" width="7" height="17"/>
+    </resources>
+</document>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		75A08A134967A9255278ABCF /* Pods_NiceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B71F283865D28602408622 /* Pods_NiceApp.framework */; };
+		EA40BE861DEB318400F1C1DE /* ZDBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40BE851DEB318400F1C1DE /* ZDBaseView.swift */; };
 		EA66C25E1D55FAF20000C6D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66C25D1D55FAF20000C6D9 /* AppDelegate.swift */; };
 		EA66C2651D55FAF20000C6D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA66C2641D55FAF20000C6D9 /* Assets.xcassets */; };
 		EA80FD981D5F608B0091D475 /* ZDMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA80FD971D5F608B0091D475 /* ZDMoreViewController.m */; };
@@ -29,6 +30,9 @@
 		EAD962D11DEAD55C007ABFB0 /* ZDCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD962CF1DEAD55C007ABFB0 /* ZDCommentTableViewCell.swift */; };
 		EAD962D21DEAD55C007ABFB0 /* ZDCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD962D01DEAD55C007ABFB0 /* ZDCommentTableViewCell.xib */; };
 		EAD962D41DEB16C9007ABFB0 /* ZDTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD962D31DEB16C9007ABFB0 /* ZDTableViewFooterView.swift */; };
+		EAD962D81DEB2398007ABFB0 /* ZDBottomToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD962D71DEB2398007ABFB0 /* ZDBottomToolView.swift */; };
+		EAD962DA1DEB261E007ABFB0 /* ZDUpToolView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD962D91DEB261E007ABFB0 /* ZDUpToolView.xib */; };
+		EAD962DC1DEB2636007ABFB0 /* ZDCommentToolView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD962DB1DEB2636007ABFB0 /* ZDCommentToolView.xib */; };
 		EAD9F0391DDA10EE00751D4B /* ZDScreenShotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD9F0381DDA10EE00751D4B /* ZDScreenShotView.swift */; };
 		EADA99981D58C1A1009C6059 /* ZDAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADA99971D58C1A1009C6059 /* ZDAPIConfig.swift */; };
 		EAE0066C1D5F71A000C6F3D6 /* more_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAE0066B1D5F71A000C6F3D6 /* more_data.plist */; };
@@ -39,6 +43,7 @@
 		38B71F283865D28602408622 /* Pods_NiceApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		477C96A267360E11D25E6530 /* Pods-NiceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiceApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NiceApp/Pods-NiceApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E57E923A9C912797F3FF958B /* Pods-NiceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiceApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-NiceApp/Pods-NiceApp.release.xcconfig"; sourceTree = "<group>"; };
+		EA40BE851DEB318400F1C1DE /* ZDBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDBaseView.swift; sourceTree = "<group>"; };
 		EA66C25A1D55FAF20000C6D9 /* NiceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA66C25D1D55FAF20000C6D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA66C2641D55FAF20000C6D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,6 +70,9 @@
 		EAD962CF1DEAD55C007ABFB0 /* ZDCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDCommentTableViewCell.swift; sourceTree = "<group>"; };
 		EAD962D01DEAD55C007ABFB0 /* ZDCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZDCommentTableViewCell.xib; sourceTree = "<group>"; };
 		EAD962D31DEB16C9007ABFB0 /* ZDTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDTableViewFooterView.swift; sourceTree = "<group>"; };
+		EAD962D71DEB2398007ABFB0 /* ZDBottomToolView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDBottomToolView.swift; sourceTree = "<group>"; };
+		EAD962D91DEB261E007ABFB0 /* ZDUpToolView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZDUpToolView.xib; sourceTree = "<group>"; };
+		EAD962DB1DEB2636007ABFB0 /* ZDCommentToolView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZDCommentToolView.xib; sourceTree = "<group>"; };
 		EAD9F0381DDA10EE00751D4B /* ZDScreenShotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZDScreenShotView.swift; path = NiceApp/Classes/View/Public/ZDScreenShotView.swift; sourceTree = SOURCE_ROOT; };
 		EADA99971D58C1A1009C6059 /* ZDAPIConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDAPIConfig.swift; sourceTree = "<group>"; };
 		EAE0066B1D5F71A000C6F3D6 /* more_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = more_data.plist; sourceTree = "<group>"; };
@@ -271,6 +279,9 @@
 				EAD962CF1DEAD55C007ABFB0 /* ZDCommentTableViewCell.swift */,
 				EAD962D01DEAD55C007ABFB0 /* ZDCommentTableViewCell.xib */,
 				EAD962D31DEB16C9007ABFB0 /* ZDTableViewFooterView.swift */,
+				EAD962D71DEB2398007ABFB0 /* ZDBottomToolView.swift */,
+				EAD962D91DEB261E007ABFB0 /* ZDUpToolView.xib */,
+				EAD962DB1DEB2636007ABFB0 /* ZDCommentToolView.xib */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -310,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				EAAE16871D60786300BC8DF3 /* ZDBaseNavigationController.swift */,
+				EA40BE851DEB318400F1C1DE /* ZDBaseView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -380,9 +392,11 @@
 			files = (
 				EAAE16861D6076D000BC8DF3 /* Menu.storyboard in Resources */,
 				EAA5E41C1D7F10C2002A1FA4 /* ZDSpecialTableViewCell.xib in Resources */,
+				EAD962DC1DEB2636007ABFB0 /* ZDCommentToolView.xib in Resources */,
 				EA66C2651D55FAF20000C6D9 /* Assets.xcassets in Resources */,
 				EAD962D21DEAD55C007ABFB0 /* ZDCommentTableViewCell.xib in Resources */,
 				EAE0066C1D5F71A000C6F3D6 /* more_data.plist in Resources */,
+				EAD962DA1DEB261E007ABFB0 /* ZDUpToolView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +464,9 @@
 				EA66C25E1D55FAF20000C6D9 /* AppDelegate.swift in Sources */,
 				EAD962D11DEAD55C007ABFB0 /* ZDCommentTableViewCell.swift in Sources */,
 				EA8E8FCC1D58D04900F0108C /* ZDNiceCommonViewController.swift in Sources */,
+				EAD962D81DEB2398007ABFB0 /* ZDBottomToolView.swift in Sources */,
 				EAAE16901D60986900BC8DF3 /* ZDNiceSpecialDetailViewController.swift in Sources */,
+				EA40BE861DEB318400F1C1DE /* ZDBaseView.swift in Sources */,
 				EAAE168A1D60972000BC8DF3 /* ZDNiceSpecialViewController.swift in Sources */,
 				EA80FD981D5F608B0091D475 /* ZDMoreViewController.m in Sources */,
 				EAA5E41B1D7F10C2002A1FA4 /* ZDSpecialTableViewCell.swift in Sources */,

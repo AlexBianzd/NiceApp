@@ -58,12 +58,11 @@ class ZDNiceSpecialDetailViewController: UIViewController {
   private func setupUI() {
     self.view.backgroundColor = .white
     
-    let tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height), style: .grouped)
+    let tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height - 44), style: .grouped)
     tableView.delegate = self
     tableView.dataSource = self
     tableView.backgroundColor = .white
     tableView.separatorStyle = .none
-    tableView.showsVerticalScrollIndicator = false
     tableView.register(UINib(nibName: "ZDCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "ZDCommentTableViewCell")
     self.view.addSubview(tableView)
     
@@ -114,11 +113,30 @@ class ZDNiceSpecialDetailViewController: UIViewController {
     contentY = self.setupImagesUI(contentY: &contentY)
     contentY = self.setupUpUsersUI(contentY: &contentY)
     contentY += 10
+    
+    if self.comments.count > 0 {
+      let commentLabel = UILabel()
+      commentLabel.frame = CGRect.init(x: 10, y: contentY, width: 35, height: 20)
+      commentLabel.font = UIFont.systemFont(ofSize: 16)
+      commentLabel.text = "评论"
+      commentLabel.textColor = UIColor.black
+      container.addSubview(commentLabel)
+      
+      let line = UIView()
+      line.frame = CGRect.init(x: commentLabel.frame.maxX + 10, y: commentLabel.center.y, width: self.view.bounds.size.width - commentLabel.frame.maxX - 20, height: 1)
+      line.backgroundColor = UIColor.lightGray
+      container.addSubview(line)
+      
+      contentY = commentLabel.frame.maxY+10;
+    }
+    
     container.frame = CGRect.init(x: 0, y: 0, width: self.view.bounds.size.width, height: contentY)
     tableView.tableHeaderView = container
 
     let footer = ZDTableViewFooterView.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 40))
     tableView.tableFooterView = footer
+    
+    self.view.addSubview(bottomToolView)
   }
   
   private func setupDescriptionUI() -> CGRect {
@@ -177,7 +195,7 @@ class ZDNiceSpecialDetailViewController: UIViewController {
       let line = UIView()
       line.backgroundColor = UIColor.lightGray
       container.addSubview(line)
-      line.frame = CGRect.init(x: up_user.frame.maxX + 10, y: up_user.center.y, width: self.view.bounds.size.width - up_user.frame.maxX - 20, height: 0.5)
+      line.frame = CGRect.init(x: up_user.frame.maxX + 10, y: up_user.center.y, width: self.view.bounds.size.width - up_user.frame.maxX - 20, height: 1)
       contentY = up_user.frame.maxY+10;
       
       let imgMargin : CGFloat = (self.view.bounds.size.width-2*10-8*36)/7
@@ -294,10 +312,23 @@ class ZDNiceSpecialDetailViewController: UIViewController {
     appName.numberOfLines = 0
     return appName
   }()
+  
+  lazy var bottomToolView: ZDBottomToolView = {
+    let bottomToolView = ZDBottomToolView.init(frame: CGRect.init(x: 0, y: self.view.bounds.size.height - 44, width: self.view.bounds.size.width, height: 44))
+    return bottomToolView
+  }()
 }
 
 // MARK: - UITableViewDelegate
 extension ZDNiceSpecialDetailViewController: UITableViewDelegate {
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    if scrollView.contentOffset.y > scrollView.contentSize.height / 2 {
+      bottomToolView.setContentOffset(CGPoint.init(x: self.view.bounds.width, y: 0), animated: true)
+    } else {
+      bottomToolView.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
+    }
+  }
+  
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
   return 10
   }
