@@ -1,5 +1,5 @@
 //
-//  ZDNiceSpecialViewController.swift
+//  ZDNiceForumViewController.swift
 //  NiceApp
 //
 //  Created by 边振东 on 8/14/16.
@@ -12,7 +12,7 @@ import Alamofire
 import SwiftyJSON
 import Kingfisher
 
-class ZDNiceSpecialViewController: UIViewController {
+class ZDNiceForumViewController: UIViewController {
   
   fileprivate var titleSegment: UISegmentedControl!
   fileprivate var containerScrollView: UIScrollView!
@@ -69,7 +69,7 @@ class ZDNiceSpecialViewController: UIViewController {
     hotTableView.backgroundColor = Color.clear
     hotTableView.separatorStyle = .none
     hotTableView.showsVerticalScrollIndicator = false
-    hotTableView!.register(UINib(nibName: "ZDSpecialTableViewCell", bundle: nil), forCellReuseIdentifier: "ZDSpecialTableViewCell")
+    hotTableView!.register(UINib(nibName: "ZDForumTableViewCell", bundle: nil), forCellReuseIdentifier: "ZDForumTableViewCell")
     containerScrollView.addSubview(hotTableView)
     hotRefreshControl = UIRefreshControl.init()
     hotRefreshControl.addTarget(self, action:#selector(refreshHotRecommendData), for: .valueChanged)
@@ -81,7 +81,7 @@ class ZDNiceSpecialViewController: UIViewController {
     recentTableView.backgroundColor = Color.clear
     recentTableView.separatorStyle = .none
     recentTableView.showsVerticalScrollIndicator = false
-    recentTableView!.register(UINib(nibName: "ZDSpecialTableViewCell", bundle: nil), forCellReuseIdentifier: "ZDSpecialTableViewCell")
+    recentTableView!.register(UINib(nibName: "ZDForumTableViewCell", bundle: nil), forCellReuseIdentifier: "ZDForumTableViewCell")
     containerScrollView.addSubview(recentTableView)
     recentRefeshControl = UIRefreshControl.init()
     recentRefeshControl.addTarget(self, action:#selector(refreshRecentRecommendData), for: .valueChanged)
@@ -177,7 +177,7 @@ class ZDNiceSpecialViewController: UIViewController {
 }
 
 // MARK: - UITableViewDelegate
-extension ZDNiceSpecialViewController: UITableViewDelegate {
+extension ZDNiceForumViewController: UITableViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     if scrollView == containerScrollView {
       return
@@ -234,11 +234,11 @@ extension ZDNiceSpecialViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch self.titleSegment.selectedSegmentIndex {
     case 0:
-      let detail = ZDNiceSpecialDetailViewController(datasource:self.hotRecommendData[indexPath.section].dictionaryValue)
+      let detail = ZDNiceForumDetailViewController(datasource:self.hotRecommendData[indexPath.section].dictionaryValue)
       self.navigationController!.pushViewController(detail, animated: true)
       
     case 1:
-      let detail = ZDNiceSpecialDetailViewController(datasource:self.recentRecommendData[indexPath.section].dictionaryValue)
+      let detail = ZDNiceForumDetailViewController(datasource:self.recentRecommendData[indexPath.section].dictionaryValue)
       self.navigationController!.pushViewController(detail, animated: true)
       
     default:
@@ -249,7 +249,7 @@ extension ZDNiceSpecialViewController: UITableViewDelegate {
 
 
 // MARK: - UITableViewDataSource
-extension ZDNiceSpecialViewController: UITableViewDataSource {
+extension ZDNiceForumViewController: UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
     switch self.titleSegment.selectedSegmentIndex {
     case 0:
@@ -266,7 +266,7 @@ extension ZDNiceSpecialViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "ZDSpecialTableViewCell", for: indexPath) as! ZDSpecialTableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ZDForumTableViewCell", for: indexPath) as! ZDForumTableViewCell
     var json = JSON.init(nilLiteral: ())
     if tableView == self.hotTableView {
       if self.hotRecommendData.count > indexPath.section {

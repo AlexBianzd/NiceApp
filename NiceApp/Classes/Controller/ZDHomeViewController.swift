@@ -10,7 +10,7 @@ import UIKit
 
 enum ZDControllerType {
     case common
-    case special
+    case forum
 }
 
 let NotifyShowMenu = Notification.Name(rawValue:"NotifyShowMenu")
@@ -27,7 +27,7 @@ class ZDHomeViewController: UIViewController {
     
     fileprivate var centerNavController : ZDBaseNavigationController!
     fileprivate var commonController : ZDNiceCommonViewController?
-    fileprivate var specialController : ZDNiceSpecialViewController?
+    fileprivate var forumController : ZDNiceForumViewController?
     
     fileprivate var menuController : UIViewController!
     
@@ -52,17 +52,17 @@ class ZDHomeViewController: UIViewController {
                     self.commonController = ZDNiceCommonViewController()
                 }
                 self.currentController = commonController
-            } else if controllerType == .special {
-                guard !(self.currentController is ZDNiceSpecialViewController) else {
+            } else if controllerType == .forum {
+                guard !(self.currentController is ZDNiceForumViewController) else {
                     self.leftMenuHiddenAnimate()
                     return
                 }
                 
                 self.removeCenterNavController()
-                if self.specialController == nil {
-                    self.specialController = ZDNiceSpecialViewController()
+                if self.forumController == nil {
+                    self.forumController = ZDNiceForumViewController()
                 }
-                self.currentController = specialController
+                self.currentController = forumController
             }
             self.centerNavController = ZDBaseNavigationController(rootViewController:self.currentController!)
             self .addCenterNavController()
@@ -208,7 +208,7 @@ class ZDHomeViewController: UIViewController {
             UIView.animate(withDuration: animationDuration, animations: { () -> Void in
                 self.view.backgroundColor = UI_COLOR_DEFAULT
             })
-            self.controllerType = .special
+            self.controllerType = .forum
         default:
             self.controllerType = .common
         }

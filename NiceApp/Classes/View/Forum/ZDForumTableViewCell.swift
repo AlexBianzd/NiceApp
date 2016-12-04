@@ -1,5 +1,5 @@
 //
-//  ZDSpecialTableViewCell.swift
+//  ZDForumTableViewCell.swift
 //  NiceApp
 //
 //  Created by 边振东 on 9/6/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ZDSpecialTableViewCell: UITableViewCell {
+class ZDForumTableViewCell: UITableViewCell {
   
   @IBOutlet weak var containerView: UIView!
   @IBOutlet weak var authorAvatar: UIImageView!
@@ -30,6 +30,8 @@ class ZDSpecialTableViewCell: UITableViewCell {
     containerView.layer.cornerRadius = 3
     authorAvatar.layer.cornerRadius = 15
     authorAvatar.clipsToBounds = true
+    coverImage.layer.borderColor = UIColor.lightGray.cgColor
+    coverImage.layer.borderWidth = 0.5
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {

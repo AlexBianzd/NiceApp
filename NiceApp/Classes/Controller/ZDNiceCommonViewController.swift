@@ -13,7 +13,6 @@ class ZDNiceCommonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UI_COLOR_DEFAULT
-        self.title = "common"
         
     }
     override func didReceiveMemoryWarning() {

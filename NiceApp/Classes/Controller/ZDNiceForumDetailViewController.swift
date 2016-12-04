@@ -1,5 +1,5 @@
 //
-//  ZDNiceSpecialDetailViewController.swift
+//  ZDNiceForumDetailViewController.swift
 //  NiceApp
 //
 //  Created by 边振东 on 8/14/16.
@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class ZDNiceSpecialDetailViewController: UIViewController {
+class ZDNiceForumDetailViewController: UIViewController {
   
   fileprivate var datasource = [String:JSON]()
   fileprivate var comments = [JSON]()
@@ -320,7 +320,7 @@ class ZDNiceSpecialDetailViewController: UIViewController {
 }
 
 // MARK: - UITableViewDelegate
-extension ZDNiceSpecialDetailViewController: UITableViewDelegate {
+extension ZDNiceForumDetailViewController: UITableViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     if scrollView.contentOffset.y > scrollView.contentSize.height / 2 {
       bottomToolView.setContentOffset(CGPoint.init(x: self.view.bounds.width, y: 0), animated: true)
@@ -347,7 +347,7 @@ extension ZDNiceSpecialDetailViewController: UITableViewDelegate {
 }
 
 // MARK: - UITableViewDataSource
-extension ZDNiceSpecialDetailViewController: UITableViewDataSource {
+extension ZDNiceForumDetailViewController: UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
     let count = self.comments.last?["count"].intValue
     if self.comments.count == count || self.comments.count == 0 {
