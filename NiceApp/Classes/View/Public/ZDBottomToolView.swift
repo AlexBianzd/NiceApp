@@ -17,14 +17,14 @@ class ZDBottomToolView: UIScrollView {
     self.showsHorizontalScrollIndicator = false
     self.isPagingEnabled = true
     self.bounces = false
-    self.contentSize = CGSize.init(width: UIScreen.main.bounds.width * 2, height: 0)
+    self.contentSize = CGSize.init(width: kSCREEN_WIDTH * 2, height: 0)
     
     let upView : UIView = Bundle.main.loadNibNamed("ZDUpToolView", owner: nil, options: nil)!.first as! UIView
-    upView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44)
+    upView.frame = CGRect(x: 0, y: 0, width: kSCREEN_WIDTH, height: 44)
     self.addSubview(upView)
     
     let commentView : UIView = Bundle.main.loadNibNamed("ZDCommentToolView", owner: nil, options: nil)!.first as! UIView
-    commentView.frame = CGRect(x: UIScreen.main.bounds.width, y: 0, width: UIScreen.main.bounds.width, height: 44)
+    commentView.frame = CGRect(x: kSCREEN_WIDTH, y: 0, width: kSCREEN_WIDTH, height: 44)
     self.addSubview(commentView)
   }
   

@@ -58,7 +58,7 @@ class ZDNiceForumDetailViewController: UIViewController {
   private func setupUI() {
     self.view.backgroundColor = .white
     
-    let tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height - 44), style: .grouped)
+    let tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: kSCREEN_WIDTH, height: kSCREEN_HEIGHT - 44), style: .grouped)
     tableView.delegate = self
     tableView.dataSource = self
     tableView.backgroundColor = .white
@@ -89,7 +89,7 @@ class ZDNiceForumDetailViewController: UIViewController {
       make.right.equalTo(authorAvatar.snp.left).offset(-10)
       make.top.equalTo(authorAvatar.snp.centerY)
     }
-    let separatorLine = UIView.init(frame: CGRect.init(x: 0, y: 44, width: container.bounds.size.width, height: 1))
+    let separatorLine = UIView.init(frame: CGRect.init(x: 0, y: 44, width: container.bounds.width, height: 1))
     separatorLine.backgroundColor = UIColor.lightGray
     container.addSubview(separatorLine)
     contentY += 44
@@ -123,14 +123,14 @@ class ZDNiceForumDetailViewController: UIViewController {
       container.addSubview(commentLabel)
       
       let line = UIView()
-      line.frame = CGRect.init(x: commentLabel.frame.maxX + 10, y: commentLabel.center.y, width: self.view.bounds.size.width - commentLabel.frame.maxX - 20, height: 1)
+      line.frame = CGRect.init(x: commentLabel.frame.maxX + 10, y: commentLabel.center.y, width: kSCREEN_WIDTH - commentLabel.frame.maxX - 20, height: 1)
       line.backgroundColor = UIColor.lightGray
       container.addSubview(line)
       
       contentY = commentLabel.frame.maxY+10;
     }
     
-    container.frame = CGRect.init(x: 0, y: 0, width: self.view.bounds.size.width, height: contentY)
+    container.frame = CGRect.init(x: 0, y: 0, width: kSCREEN_WIDTH, height: contentY)
     tableView.tableHeaderView = container
 
     let footer = ZDTableViewFooterView.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 40))
@@ -152,7 +152,7 @@ class ZDNiceForumDetailViewController: UIViewController {
     description.attributedText = descriptionAttText
     description.numberOfLines = 0
     container.addSubview(description)
-    let rect = descriptionAttText.boundingRect(with: CGSize.init(width: self.view.bounds.size.width - 20, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, context: nil)
+    let rect = descriptionAttText.boundingRect(with: CGSize.init(width: kSCREEN_WIDTH - 20, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, context: nil)
     description.snp.makeConstraints { (make) in
       make.top.equalTo(appName.snp.bottom).offset(60)
       make.height.equalTo(rect.size.height)
@@ -195,10 +195,10 @@ class ZDNiceForumDetailViewController: UIViewController {
       let line = UIView()
       line.backgroundColor = UIColor.lightGray
       container.addSubview(line)
-      line.frame = CGRect.init(x: up_user.frame.maxX + 10, y: up_user.center.y, width: self.view.bounds.size.width - up_user.frame.maxX - 20, height: 1)
+      line.frame = CGRect.init(x: up_user.frame.maxX + 10, y: up_user.center.y, width: kSCREEN_WIDTH - up_user.frame.maxX - 20, height: 1)
       contentY = up_user.frame.maxY+10;
       
-      let imgMargin : CGFloat = (self.view.bounds.size.width-2*10-8*36)/7
+      let imgMargin : CGFloat = (kSCREEN_WIDTH-2*10-8*36)/7
       if up_users!.count <= 18 {
         for i in 0..<up_users!.count {
           let userImg = UIImageView.init()
@@ -221,7 +221,7 @@ class ZDNiceForumDetailViewController: UIViewController {
       } else {
         let upusersContainer = UIScrollView()
         upusersContainer.showsHorizontalScrollIndicator = false
-        upusersContainer.frame = CGRect.init(x: 0, y: contentY, width: self.view.bounds.size.width, height: 36 * 2 + imgMargin)
+        upusersContainer.frame = CGRect.init(x: 0, y: contentY, width: kSCREEN_WIDTH, height: 36 * 2 + imgMargin)
         upusersContainer.contentSize = CGSize.init(width:  10+NSInteger(up_users!.count/2)*NSInteger(36+imgMargin), height: 0)
         container.addSubview(upusersContainer)
         for i in 0..<up_users!.count {
@@ -255,7 +255,7 @@ class ZDNiceForumDetailViewController: UIViewController {
     let x = c.characters.index(of: "x")
     let imgWidth  = Float(c.substring(to: x!))
     let imgHeight = Float(c.substring(from: c.characters.index(after: x!)))
-    let width  = self.view.bounds.size.width - 20
+    let width  = kSCREEN_WIDTH - 20
     let height = width * CGFloat(imgHeight! / imgWidth!)
     return CGSize.init(width: width, height: height)
   }
@@ -314,7 +314,7 @@ class ZDNiceForumDetailViewController: UIViewController {
   }()
   
   lazy var bottomToolView: ZDBottomToolView = {
-    let bottomToolView = ZDBottomToolView.init(frame: CGRect.init(x: 0, y: self.view.bounds.size.height - 44, width: self.view.bounds.size.width, height: 44))
+    let bottomToolView = ZDBottomToolView.init(frame: CGRect.init(x: 0, y: kSCREEN_HEIGHT - 44, width: kSCREEN_WIDTH, height: 44))
     return bottomToolView
   }()
 }
@@ -341,7 +341,7 @@ extension ZDNiceForumDetailViewController: UITableViewDelegate {
     let contentAttText = NSMutableAttributedString.init(string: content)
     let range = NSMakeRange(0, contentAttText.length)
     contentAttText.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 12), range: range)
-    let rect = contentAttText.boundingRect(with: CGSize.init(width: self.view.bounds.size.width - 20, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, context: nil)
+    let rect = contentAttText.boundingRect(with: CGSize.init(width: kSCREEN_WIDTH - 20, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, context: nil)
     return rect.size.height + 15 + 23 + 30
   }
 }

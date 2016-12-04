@@ -42,7 +42,7 @@ class ZDBaseNavigationController: UINavigationController,UINavigationControllerD
       viewController.hidesBottomBarWhenPushed = true
     }
     let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    UIGraphicsBeginImageContextWithOptions(CGSize.init(width: (appDelegate.window?.frame.size.width)!, height: (appDelegate.window?.frame.size.height)!), true, 0)
+    UIGraphicsBeginImageContextWithOptions(CGSize.init(width: (kSCREEN_WIDTH), height: (kSCREEN_HEIGHT)), true, 0)
     appDelegate.window?.layer.render(in: UIGraphicsGetCurrentContext()!)
     let viewImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
@@ -93,8 +93,8 @@ class ZDBaseNavigationController: UINavigationController,UINavigationControllerD
       rootVC?.view.transform = CGAffineTransform.init(translationX:  10, y: 0)
       presentedVC?.view.transform = CGAffineTransform.init(translationX:  10, y: 0)
     UIView.animate(withDuration: 0.3, animations: {
-      rootVC?.view.transform = CGAffineTransform.init(translationX: self.view.bounds.size.width, y: 0)
-      presentedVC?.view.transform = CGAffineTransform.init(translationX: self.view.bounds.size.width, y: 0)
+      rootVC?.view.transform = CGAffineTransform.init(translationX: kSCREEN_WIDTH, y: 0)
+      presentedVC?.view.transform = CGAffineTransform.init(translationX: kSCREEN_WIDTH, y: 0)
     }, completion: { (finished : Bool) in
       if finished == true {
         self.popViewController(animated: false)

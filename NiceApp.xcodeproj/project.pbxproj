@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		75A08A134967A9255278ABCF /* Pods_NiceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B71F283865D28602408622 /* Pods_NiceApp.framework */; };
+		92EA96ED1DF4429900A57EFE /* ZDAppMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EA96EC1DF4429900A57EFE /* ZDAppMacro.swift */; };
+		92EA96F01DF456C200A57EFE /* ZDCommonBriefCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EA96EE1DF456C200A57EFE /* ZDCommonBriefCell.swift */; };
+		92EA96F11DF456C200A57EFE /* ZDCommonBriefCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92EA96EF1DF456C200A57EFE /* ZDCommonBriefCell.xib */; };
 		EA40BE861DEB318400F1C1DE /* ZDBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40BE851DEB318400F1C1DE /* ZDBaseView.swift */; };
 		EA66C25E1D55FAF20000C6D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66C25D1D55FAF20000C6D9 /* AppDelegate.swift */; };
 		EA66C2651D55FAF20000C6D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA66C2641D55FAF20000C6D9 /* Assets.xcassets */; };
@@ -42,6 +45,9 @@
 /* Begin PBXFileReference section */
 		38B71F283865D28602408622 /* Pods_NiceApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		477C96A267360E11D25E6530 /* Pods-NiceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiceApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NiceApp/Pods-NiceApp.debug.xcconfig"; sourceTree = "<group>"; };
+		92EA96EC1DF4429900A57EFE /* ZDAppMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDAppMacro.swift; sourceTree = "<group>"; };
+		92EA96EE1DF456C200A57EFE /* ZDCommonBriefCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDCommonBriefCell.swift; sourceTree = "<group>"; };
+		92EA96EF1DF456C200A57EFE /* ZDCommonBriefCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZDCommonBriefCell.xib; sourceTree = "<group>"; };
 		E57E923A9C912797F3FF958B /* Pods-NiceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiceApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-NiceApp/Pods-NiceApp.release.xcconfig"; sourceTree = "<group>"; };
 		EA40BE851DEB318400F1C1DE /* ZDBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDBaseView.swift; sourceTree = "<group>"; };
 		EA66C25A1D55FAF20000C6D9 /* NiceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,8 +100,18 @@
 		92EA96DA1DF40DC000A57EFE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				92EA96EE1DF456C200A57EFE /* ZDCommonBriefCell.swift */,
+				92EA96EF1DF456C200A57EFE /* ZDCommonBriefCell.xib */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		92EA96EB1DF441F200A57EFE /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				92EA96EC1DF4429900A57EFE /* ZDAppMacro.swift */,
+			);
+			name = Macros;
 			sourceTree = "<group>";
 		};
 		9E7B08D807F620D46E13C43A /* Frameworks */ = {
@@ -264,6 +280,7 @@
 		EADA99951D58C11C009C6059 /* Expand */ = {
 			isa = PBXGroup;
 			children = (
+				92EA96EB1DF441F200A57EFE /* Macros */,
 				EAAE167E1D60735600BC8DF3 /* Extension */,
 				EADA99961D58C167009C6059 /* Network */,
 			);
@@ -405,6 +422,7 @@
 				EAD962D21DEAD55C007ABFB0 /* ZDCommentTableViewCell.xib in Resources */,
 				EAE0066C1D5F71A000C6F3D6 /* more_data.plist in Resources */,
 				EAD962DA1DEB261E007ABFB0 /* ZDUpToolView.xib in Resources */,
+				92EA96F11DF456C200A57EFE /* ZDCommonBriefCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,12 +494,14 @@
 				EAAE16901D60986900BC8DF3 /* ZDNiceForumDetailViewController.swift in Sources */,
 				EA40BE861DEB318400F1C1DE /* ZDBaseView.swift in Sources */,
 				EAAE168A1D60972000BC8DF3 /* ZDNiceForumViewController.swift in Sources */,
+				92EA96F01DF456C200A57EFE /* ZDCommonBriefCell.swift in Sources */,
 				EA80FD981D5F608B0091D475 /* ZDMoreViewController.m in Sources */,
 				EAA5E41B1D7F10C2002A1FA4 /* ZDForumTableViewCell.swift in Sources */,
 				EAA95CB21D57745C002C140F /* ZDHomeViewController.swift in Sources */,
 				EA80FD9C1D5F64020091D475 /* ZDMoreTableViewCell.m in Sources */,
 				EAAE16881D60786300BC8DF3 /* ZDBaseNavigationController.swift in Sources */,
 				EAA95CB01D571F66002C140F /* ZDMenuTableViewCell.swift in Sources */,
+				92EA96ED1DF4429900A57EFE /* ZDAppMacro.swift in Sources */,
 				EADA99981D58C1A1009C6059 /* ZDAPIConfig.swift in Sources */,
 				EAD9F0391DDA10EE00751D4B /* ZDScreenShotView.swift in Sources */,
 				EAFD2F2D1D56BF8200D665DD /* ZDMenuViewController.swift in Sources */,

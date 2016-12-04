@@ -53,7 +53,7 @@ class ZDNiceForumViewController: UIViewController {
     
     containerScrollView = UIScrollView(frame: self.view.bounds)
     containerScrollView.delegate = self
-    containerScrollView.contentSize = CGSize(width: self.view.bounds.size.width * 2, height: 0)
+    containerScrollView.contentSize = CGSize(width: kSCREEN_WIDTH * 2, height: 0)
     containerScrollView.isPagingEnabled = true
     containerScrollView.bounces = false
     containerScrollView.showsHorizontalScrollIndicator = false
@@ -63,7 +63,7 @@ class ZDNiceForumViewController: UIViewController {
       make.left.right.bottom.equalTo(self.view)
     }
     
-    hotTableView = UITableView.init(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height - 64), style: .grouped)
+    hotTableView = UITableView.init(frame: CGRect(x: 0, y: 0, width: kSCREEN_WIDTH, height: kSCREEN_HEIGHT - 64), style: .grouped)
     hotTableView.delegate = self
     hotTableView.dataSource = self
     hotTableView.backgroundColor = Color.clear
@@ -75,7 +75,7 @@ class ZDNiceForumViewController: UIViewController {
     hotRefreshControl.addTarget(self, action:#selector(refreshHotRecommendData), for: .valueChanged)
     hotTableView.addSubview(hotRefreshControl)
     
-    recentTableView = UITableView.init(frame: CGRect(x: self.view.bounds.size.width, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height - 64), style: .grouped)
+    recentTableView = UITableView.init(frame: CGRect(x: kSCREEN_WIDTH, y: 0, width: kSCREEN_WIDTH, height: kSCREEN_HEIGHT - 64), style: .grouped)
     recentTableView.delegate = self
     recentTableView.dataSource = self
     recentTableView.backgroundColor = Color.clear
@@ -172,7 +172,7 @@ class ZDNiceForumViewController: UIViewController {
   
   func scrollToViewAtSegIndex() {
     let index = self.titleSegment.selectedSegmentIndex
-    containerScrollView.setContentOffset(CGPoint(x: self.view.bounds.size.width * CGFloat(index), y:containerScrollView.contentOffset.y), animated: true)
+    containerScrollView.setContentOffset(CGPoint(x: kSCREEN_WIDTH * CGFloat(index), y:containerScrollView.contentOffset.y), animated: true)
   }
 }
 
