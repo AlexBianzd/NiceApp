@@ -14,7 +14,7 @@ extension UIColor {
         // 默认颜色
         let DEFAULT_VOID_COLOR : UIColor = UIColor.white
       
-        var cString : String = stringToConvert.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        var cString : String = stringToConvert.trimmingCharacters(in: CharacterSet.alphanumerics.inverted).uppercased()
 
         if cString.characters.count < 6 {
             return DEFAULT_VOID_COLOR

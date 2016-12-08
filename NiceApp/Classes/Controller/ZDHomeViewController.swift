@@ -190,8 +190,8 @@ class ZDHomeViewController: UIViewController {
     let bg : String = notify.object as! String
     let color = UIColor.colorWithHexString(bg)
     self.view.backgroundColor = color
-    self.commonController?.view.backgroundColor = UIColor.colorWithHexString(bg)
-    self.commonController?.navigationController?.navigationBar.barTintColor = UIColor.colorWithHexString(bg)
+    self.currentController?.view.backgroundColor = color
+    self.currentController?.navigationController?.navigationBar.barTintColor = color
   }
   
   func leftMenuSetupCenterView(notify : NSNotification) {

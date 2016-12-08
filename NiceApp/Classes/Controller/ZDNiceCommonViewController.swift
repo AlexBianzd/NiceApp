@@ -13,8 +13,6 @@ import Alamofire
 class ZDNiceCommonViewController: UIViewController {
   
   fileprivate let bottomHeight : CGFloat = 100.0
-  fileprivate var briefCollection: UICollectionView!
-  fileprivate var iconCollection:  UICollectionView!
   fileprivate var dataSource = [JSON]()
   fileprivate let defaultPageSize = 10
   fileprivate var currentPage = 1
@@ -36,9 +34,8 @@ class ZDNiceCommonViewController: UIViewController {
   }
   
   private func setupBriefCollection() {
-    self.briefCollection = briefCollectionView
-    self.view.addSubview(self.briefCollection)
-    briefCollection.snp.makeConstraints { (make) in
+    self.view.addSubview(self.briefCollectionView)
+    briefCollectionView.snp.makeConstraints { (make) in
       make.top.equalTo(self.view)
       make.bottom.equalTo(self.view).offset(-self.bottomHeight)
       make.left.right.equalTo(self.view)
@@ -59,7 +56,7 @@ class ZDNiceCommonViewController: UIViewController {
       case .success(let value):
         let json = JSON(value)
         self.dataSource = json["data"]["apps"].arrayValue
-        self.briefCollection.reloadData()
+        self.briefCollectionView.reloadData()
       case .failure(let error):
         print(error)
       }
@@ -79,22 +76,37 @@ class ZDNiceCommonViewController: UIViewController {
     collection.isPagingEnabled = true
     collection.register(UINib(nibName: "ZDCommonBriefCell", bundle: nil), forCellWithReuseIdentifier: "ZDCommonBriefCell")
     collection.backgroundColor = UIColor.clear
+    return collection
+  }()
+  
+  private lazy var iconCollectionView: UICollectionView = {
+    let layout = UICollectionViewFlowLayout.init()
+    layout.itemSize = CGSize.init(width: kSCREEN_WIDTH - 10, height: kSCREEN_HEIGHT - self.bottomHeight - 64 - 5)
+    layout.scrollDirection = UICollectionViewScrollDirection.horizontal
+    layout.sectionInset = UIEdgeInsetsMake(5, 5, 0, 5);
     
+    let collection = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
+    collection.delegate = self
+    collection.dataSource = self
+    collection.showsHorizontalScrollIndicator = false
+    collection.isPagingEnabled = true
+    collection.register(UINib(nibName: "ZDCommonBriefCell", bundle: nil), forCellWithReuseIdentifier: "ZDCommonBriefCell")
+    collection.backgroundColor = UIColor.clear
     return collection
   }()
 }
 
 // MARK: - UICollectionViewDelegate
 extension ZDNiceCommonViewController: UICollectionViewDelegate {
-//  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//    let index : Int = Int((scrollView.contentOffset.x) / kSCREEN_WIDTH)
-//    if index < dataSource.count - 1 && index >= 0 {
-//      var model = dataSource[index]
-//      var notification = Notification.init(name: NotifyColor)
-//      notification.object = model["recommanded_background_color"].stringValue
-//      NotificationCenter.default.post(notification)
-//    }
-//  }
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    let index : Int = Int((scrollView.contentOffset.x) / kSCREEN_WIDTH)
+    if index < dataSource.count - 1 && index >= 0 {
+      var model = dataSource[index]
+      var notification = Notification.init(name: NotifyColor)
+      notification.object = model["recommanded_background_color"].stringValue
+      NotificationCenter.default.post(notification)
+    }
+  }
 }
 
 // MARK: - UICollectionViewDataSource
