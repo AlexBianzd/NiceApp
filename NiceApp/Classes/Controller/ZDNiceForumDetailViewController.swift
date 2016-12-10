@@ -33,10 +33,16 @@ class ZDNiceForumDetailViewController: UIViewController {
     self.navigationController?.navigationBar.isHidden = true
     self.setupUI()
     let backBtn = UIButton.init(type: .custom)
-    backBtn.frame = CGRect.init(x: 15, y: 15, width: 35, height: 35)
-    backBtn.backgroundColor = UIColor.blue
+    backBtn.setImage(UIImage.init(named: "cnb_back"), for: .normal)
+    backBtn.setImage(UIImage.init(named: "cnb_back_highlight"), for: .highlighted)
+    backBtn.layer.cornerRadius = 35 / 2;
     backBtn.addTarget(self, action: #selector(back), for: .touchUpInside)
     self.view.addSubview(backBtn)
+    backBtn.snp.makeConstraints { (make) in
+      make.width.height.equalTo(35)
+      make.centerX.equalTo(self.view.snp.left).offset(44 / 2)
+      make.centerY.equalTo(self.view.snp.top).offset(44 / 2 + 20)
+    }
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +69,7 @@ class ZDNiceForumDetailViewController: UIViewController {
     tableView.dataSource = self
     tableView.backgroundColor = .white
     tableView.separatorStyle = .none
+    tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 10, right: 0)
     tableView.register(UINib(nibName: "ZDCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "ZDCommentTableViewCell")
     self.view.addSubview(tableView)
     

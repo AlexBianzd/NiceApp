@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ZDCommonIconCell" id="gTV-IL-0wX" customClass="ZDCommonIconCell" customModule="NiceApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="149" height="238"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="149" height="238"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dKm-hL-M8R" customClass="ZDBaseView" customModule="NiceApp" customModuleProvider="target">
+                        <rect key="frame" x="1" y="50" width="147" height="238"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Rd-Ui-M8m">
+                                <rect key="frame" x="3" y="3" width="141" height="141"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7Rd-Ui-M8m" secondAttribute="height" multiplier="1:1" id="5Dw-wZ-ezj"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7Rd-Ui-M8m" secondAttribute="trailing" constant="3" id="DX3-pD-z9q"/>
+                            <constraint firstItem="7Rd-Ui-M8m" firstAttribute="leading" secondItem="dKm-hL-M8R" secondAttribute="leading" constant="3" id="dML-RR-pNC"/>
+                            <constraint firstItem="7Rd-Ui-M8m" firstAttribute="top" secondItem="dKm-hL-M8R" secondAttribute="top" constant="3" id="egm-1O-MBM"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="dKm-hL-M8R" secondAttribute="trailing" constant="1" id="4gr-JY-VYf"/>
+                <constraint firstItem="dKm-hL-M8R" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="50" id="BCI-vu-mMe"/>
+                <constraint firstAttribute="bottom" secondItem="dKm-hL-M8R" secondAttribute="bottom" constant="-50" id="MMk-hL-HZY"/>
+                <constraint firstItem="dKm-hL-M8R" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="N6L-cS-DBB"/>
+            </constraints>
+            <size key="customSize" width="149" height="238"/>
+            <connections>
+                <outlet property="container" destination="dKm-hL-M8R" id="0dn-us-fdA"/>
+                <outlet property="icon" destination="7Rd-Ui-M8m" id="Ld9-ue-aab"/>
+            </connections>
+            <point key="canvasLocation" x="17.5" y="21"/>
+        </collectionViewCell>
+    </objects>
+</document>

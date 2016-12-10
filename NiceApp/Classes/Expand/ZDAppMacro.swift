@@ -16,4 +16,4 @@ let NotifyHideMenu = Notification.Name(rawValue:"NotifyHideMenu")
 let NotifyColor    = Notification.Name(rawValue:"NotifyColor")
 let NotifyCenter   = Notification.Name(rawValue:"NotifyCenter")
 
-let UI_COLOR_DEFAULT : UIColor = UIColor(red: 0/255.0, green: 166/255.0, blue: 220/255.0, alpha: 1)
+let UI_COLOR_DEFAULT : UIColor = UIColor.colorWithHexString("#00aac6")

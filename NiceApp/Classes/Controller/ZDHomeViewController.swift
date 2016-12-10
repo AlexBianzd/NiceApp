@@ -189,9 +189,12 @@ class ZDHomeViewController: UIViewController {
   func leftMenuSetupBackColor(notify : NSNotification) {
     let bg : String = notify.object as! String
     let color = UIColor.colorWithHexString(bg)
-    self.view.backgroundColor = color
-    self.currentController?.view.backgroundColor = color
-    self.currentController?.navigationController?.navigationBar.barTintColor = color
+    UIView.animate(withDuration: animationDuration, animations: { () -> Void in
+      self.view.backgroundColor = color
+      self.currentController?.view.backgroundColor = color
+      self.currentController?.navigationController?.navigationBar.barTintColor = color
+      self.menuController.view.backgroundColor = color
+    })
   }
   
   func leftMenuSetupCenterView(notify : NSNotification) {
@@ -200,6 +203,7 @@ class ZDHomeViewController: UIViewController {
     case "发现应用":
       UIView.animate(withDuration: animationDuration, animations: { () -> Void in
         self.view.backgroundColor = UI_COLOR_DEFAULT
+        self.menuController.view.backgroundColor = UI_COLOR_DEFAULT
       })
       self.controllerType = .forum
     default:

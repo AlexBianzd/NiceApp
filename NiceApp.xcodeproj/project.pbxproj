@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		75A08A134967A9255278ABCF /* Pods_NiceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B71F283865D28602408622 /* Pods_NiceApp.framework */; };
+		929BDC3D1DF9B42F008D0A69 /* ZDCommonIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929BDC3B1DF9B42F008D0A69 /* ZDCommonIconCell.swift */; };
+		929BDC3E1DF9B42F008D0A69 /* ZDCommonIconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 929BDC3C1DF9B42F008D0A69 /* ZDCommonIconCell.xib */; };
 		92EA96ED1DF4429900A57EFE /* ZDAppMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EA96EC1DF4429900A57EFE /* ZDAppMacro.swift */; };
 		92EA96F01DF456C200A57EFE /* ZDCommonBriefCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EA96EE1DF456C200A57EFE /* ZDCommonBriefCell.swift */; };
 		92EA96F11DF456C200A57EFE /* ZDCommonBriefCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92EA96EF1DF456C200A57EFE /* ZDCommonBriefCell.xib */; };
@@ -45,6 +47,8 @@
 /* Begin PBXFileReference section */
 		38B71F283865D28602408622 /* Pods_NiceApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		477C96A267360E11D25E6530 /* Pods-NiceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiceApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NiceApp/Pods-NiceApp.debug.xcconfig"; sourceTree = "<group>"; };
+		929BDC3B1DF9B42F008D0A69 /* ZDCommonIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDCommonIconCell.swift; sourceTree = "<group>"; };
+		929BDC3C1DF9B42F008D0A69 /* ZDCommonIconCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZDCommonIconCell.xib; sourceTree = "<group>"; };
 		92EA96EC1DF4429900A57EFE /* ZDAppMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDAppMacro.swift; sourceTree = "<group>"; };
 		92EA96EE1DF456C200A57EFE /* ZDCommonBriefCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZDCommonBriefCell.swift; sourceTree = "<group>"; };
 		92EA96EF1DF456C200A57EFE /* ZDCommonBriefCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZDCommonBriefCell.xib; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 			children = (
 				92EA96EE1DF456C200A57EFE /* ZDCommonBriefCell.swift */,
 				92EA96EF1DF456C200A57EFE /* ZDCommonBriefCell.xib */,
+				929BDC3B1DF9B42F008D0A69 /* ZDCommonIconCell.swift */,
+				929BDC3C1DF9B42F008D0A69 /* ZDCommonIconCell.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -416,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAAE16861D6076D000BC8DF3 /* Menu.storyboard in Resources */,
+				929BDC3E1DF9B42F008D0A69 /* ZDCommonIconCell.xib in Resources */,
 				EAA5E41C1D7F10C2002A1FA4 /* ZDForumTableViewCell.xib in Resources */,
 				EAD962DC1DEB2636007ABFB0 /* ZDCommentToolView.xib in Resources */,
 				EA66C2651D55FAF20000C6D9 /* Assets.xcassets in Resources */,
@@ -493,6 +500,7 @@
 				EAD962D81DEB2398007ABFB0 /* ZDBottomToolView.swift in Sources */,
 				EAAE16901D60986900BC8DF3 /* ZDNiceForumDetailViewController.swift in Sources */,
 				EA40BE861DEB318400F1C1DE /* ZDBaseView.swift in Sources */,
+				929BDC3D1DF9B42F008D0A69 /* ZDCommonIconCell.swift in Sources */,
 				EAAE168A1D60972000BC8DF3 /* ZDNiceForumViewController.swift in Sources */,
 				92EA96F01DF456C200A57EFE /* ZDCommonBriefCell.swift in Sources */,
 				EA80FD981D5F608B0091D475 /* ZDMoreViewController.m in Sources */,
