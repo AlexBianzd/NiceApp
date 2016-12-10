@@ -125,14 +125,14 @@ class ZDBaseNavigationController: UINavigationController,UINavigationControllerD
       let point_inView = gesture.translation(in: self.view)
       if point_inView.x >= 80 {
         UIView.animate(withDuration: 0.3, animations: {
-          rootVC?.view.transform = CGAffineTransform.init(translationX: 320, y: 0)
-          presentedVC?.view.transform = CGAffineTransform.init(translationX: 320, y: 0)
+          rootVC?.view.transform = CGAffineTransform.init(translationX: kSCREEN_WIDTH, y: 0)
+          presentedVC?.view.transform = CGAffineTransform.init(translationX: kSCREEN_WIDTH, y: 0)
         }, completion: { (finished : Bool) in
           if finished == true {
-            self.popViewController(animated: false)
             rootVC?.view.transform = CGAffineTransform.identity;
             presentedVC?.view.transform =  CGAffineTransform.identity;
             appDelegate.screenshotView.isHidden = true;
+            self.popViewController(animated: false)
           }
         })
       } else {
