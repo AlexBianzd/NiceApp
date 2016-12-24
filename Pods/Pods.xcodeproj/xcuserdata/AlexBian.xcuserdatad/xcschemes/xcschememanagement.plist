@@ -2,62 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SchemeUserState</key>
-	<dict>
-		<key>Alamofire.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>Kingfisher.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>Pods-NiceApp.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
-		<key>SnapKit.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
-		</dict>
-		<key>SwiftyJSON.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
-		</dict>
-	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>040135D4405575171AC8B7274482DBD0</key>
+		<key>0C11DB418E0AE65AEEA936325A1965BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0F77CDFFB653FD4EAA6E1FB37821791E</key>
+		<key>2D5F4EC8E7D12DEEA9254F408AEC5282</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>18645BCAA0EB3606BA0D94C433E1D2E5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1E51C3C9E4E88006997AE1C0BA96E64A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>37B6024559B8679806F3B1BBC3CC24C9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>42B266D963DBE5A2BC14A84FB5D5FA5A</key>
+		<key>31AF7D0E40A7568BC629A3CAD301EEA6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,7 +34,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8D8E7777E62F062C77BC4AC94E2BCFBA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>95B573114D69A2A03CEA54D0DE5C7A59</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A48862DA9098A11A5BEA00BB3227A749</key>
 		<dict>
 			<key>primary</key>
 			<true/>
